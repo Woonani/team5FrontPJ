@@ -1,12 +1,14 @@
 window.onload = function() {
 	checkUser();
 };
+let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
 // 데이터가 없는 경우 모달 창 표시
 function checkUser() {
 	let userData = localStorage.getItem('userData');
 	if (!userData) {
 		modalInstance.show();
+		handleImageEvent();
 	} else {
 		// locatstorage에서 userData 불러오기
 		let parsedData = JSON.parse(userData);
@@ -39,7 +41,7 @@ function checkUser() {
 	}
 }
 
-let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+
 
 // kakapmap api 설정
 let container = document.getElementById('map');
@@ -139,12 +141,6 @@ function displayMarker(locPosition, message) {
 	map.setCenter(locPosition);
 }
 
-// 모달 생성
-function createUserModal() {
-	// modal
-	modalInstance.show();
-	handleImageEvent();
-}
 
 // 이미지 드랍 영역 처리
 function handleImageEvent() {
