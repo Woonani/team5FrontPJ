@@ -23,8 +23,9 @@ function checkUser() {
 		getGeoLocation().then(function(location) {
 			let lat = location.lat;
 			let lon = location.lon;
-			var locPosition = new kakao.maps.LatLng(lat, lon)
-			displayMarker(locPosition);
+			let locPosition = new kakao.maps.LatLng(lat, lon)
+			console.log(locPosition);
+			displayMarker(locPosition, "hello world");
 			searchAddrFromCoords(locPosition, function(result, status) {
 				if (status === kakao.maps.services.Status.OK) {
 					// 주소 정보를 정상적으로 받아왔을 때 실행할 코드 작성
@@ -116,7 +117,7 @@ function getGeoLocation() {
 }
 
 
-// 지도에 마커와 인포윈도우를 표시
+// 지도에 마커 표시
 function displayMarker(locPosition, message) {
 
 	// 마커를 생성합니다
