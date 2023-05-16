@@ -1,22 +1,21 @@
 window.onload = function() {
-	
-	
-	// 로컬스토리지에서 데이터 확인
+	checkUser();
+};
+
+// 데이터가 없는 경우 모달 창 표시
+function checkUser() {
 	let userData = localStorage.getItem('userData');
-	
-	// 데이터가 없는 경우 모달 창 표시
 	if (!userData) {
-		let modalInstance = createUserModal();
 		modalInstance.show();
 	} else {
 		// locatstorage에서 userData 불러오기
 		let parsedData = JSON.parse(userData);
 		let loginUserName = document.getElementById('loginUserName');
-		loginUserName.textContent = parsedData.name; arguments
+		loginUserName.textContent = parsedData.name;
 
 		// sidebar 펼치기
 		let sidebar = document.getElementById('sidebar');
-		sidebar.classList.add('show'); arguments
+		sidebar.classList.add('show'); 
 
 		// geolocation으로 현재 위치 가져오기
 		getGeoLocation().then(function(location) {
@@ -38,7 +37,9 @@ window.onload = function() {
 			console.error(error);
 		});
 	}
-};
+}
+
+let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
 // kakapmap api 설정
 let container = document.getElementById('map');
@@ -69,6 +70,8 @@ registerBtn.addEventListener('click', function() {
 		};
 		localStorage.setItem('userData', JSON.stringify(data));
 		modalInstance.hide();
+		checkUser();
+
 	} else {
 		nameErrorMessage.classList.remove('d-none');
 	}
@@ -139,13 +142,8 @@ function displayMarker(locPosition, message) {
 // 모달 생성
 function createUserModal() {
 	// modal
-	let modal = document.getElementById("staticBackdrop");
-	let modalInstance = new bootstrap.Modal(modal, {
-		backdrop: "static",
-		keyboard: false
-	});
+	modalInstance.show();
 	handleImageEvent();
-	return modalInstance;
 }
 
 // 이미지 드랍 영역 처리
