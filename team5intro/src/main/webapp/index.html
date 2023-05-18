@@ -14,6 +14,10 @@
 	body {
 		overflow:scroll;
 		margin-bottom: 300px;
+		text-align: center;
+	}
+	.contents-titles{
+		margin: 100px 0px 10px 30px;
 	}
 	.contents-1  {
 		margin: 30px;
@@ -21,12 +25,24 @@
 		text-align: center;
 		width: 100vw;
 		justify-content: center;
+		display: flex;		
+	}
+	.contents-2 {
+		background-color: rgb(255, 197, 0, 0.7);
+		text-align: center;
+		width: 800vw;
+		height: 500px;
+		justify-content: center;
 		display: flex;
-		
 	}
 	#teamimg {
-		width : 100px;
+		width : 120px;
 		border-radius: 50%;
+	}
+	#teamimg:hover {
+		width : 130px;
+		border-radius: 50%;
+		box-shadow: 1px 1px 10px 5px rgba(30, 30, 30, 0.7);
 	}
 	/* li {
 		display: inline;
@@ -41,7 +57,7 @@
 		 width: 300px;
 		 display: grid;
 		 grid-template-rows: repeat(2, 1fr);
-		}
+	}
 		
 	.function-box > :nth-child(2) {
 		display: grid;
@@ -50,7 +66,7 @@
 	}
 
 	.function-box button {
-		 background-color: rgba(255, 255, 255, 0.7);
+		 background-color: rgba(255, 255, 255, 0.4);
 		 border-radius: 10px;
 		 text-align: center;
 		 margin: 10px 0px;
@@ -60,7 +76,8 @@
 <body>
 
 	 <!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; ">
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; position: fixed; top:0; width:100%;">
+<!-- 	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; position: fixed; top:0; width:100%;"> -->
 	    <!-- Container wrapper -->
 	    <div class="container-fluid">
 	        <!-- Navbar brand -->
@@ -79,13 +96,13 @@
 	            <!-- Left links -->
 	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	                <li class="nav-item">
-	                    <a class="nav-link" href="/webapp/Intro.html">Intro</a>
+	                    <a class="nav-link" href="#hw1">Geolocation</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">Member</a>
+	                    <a class="nav-link" href="#hw2">Drag&Drop</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">Function</a>
+	                    <a class="nav-link" href="#hw3">LocalStorage</a>
 	                </li>
 	            </ul>
 	            <!-- Left links -->
@@ -99,11 +116,11 @@
 	
 	<!-- contents -->
 	<div class="contents-main" >		
-	<div class="contents-1">
-			<h1> Team 5 Members </h1>
+		<h1 class="contents-titles"> Team 5 Members </h1>
+		<section class="contents-1" id="top">
 			<div class="function-box" id="function-box1">
 				<div>
-					<p><img src="images/wne2.jpg" alt="우나사진" id="teamimg"></p>
+					<p><a href="Woonani.html"><img src="images/wne2.jpg" alt="우나사진" id="teamimg" ></a></p>
 					<p><h4>우나은</h4></p>
 				</div>
 				<div>
@@ -116,7 +133,7 @@
 			
 			<div class="function-box" id="function-box3">
 				<div>
-					<p><img src="images/jbk2.jpg" alt="병국사진" id="teamimg"></p>
+					<p><a href="tbgg.html"><img src="images/jbk2.jpg" alt="병국사진" id="teamimg"></a></p>
 					<p><h4>조병국</h4></p>
 				</div>
 				<div>
@@ -128,7 +145,7 @@
 			
 			<div class="function-box" id="function-box2">
 				<div>
-					<p><img src="images/chd2.jpg" alt="현동사진" id="teamimg"></p>
+					<p><a href="devsibong.html"><img src="images/chd2.jpg" alt="현동사진" id="teamimg"></a></p>
 					<p><h4>최현동</h4></p>
 				</div>
 				<div>
@@ -140,7 +157,7 @@
 			
 			<div class="function-box" id="function-box4">
 				<div>
-					<p><img src="images/kch2.jpg" alt="창현사진" id="teamimg"></p>
+					<p><a href="nylonmusk.html"><img src="images/kch2.jpg" alt="창현사진" id="teamimg"></a></p>
 					<p><h4>김창현</h4></p>
 				</div>
 				<div>
@@ -148,40 +165,42 @@
 					<li>소울푸드 : 햄버거</li>
 				</div>				
 				<br>
-			</div>
-		</div>	
-	</div>
+				</div>
+			</div>	
+		</section>
+		
+	<section id="hw1">
+		<h1 class="contents-titles">Geolocation</h1>
+		<div class="contents-2">
+		
+		</div>
+	</section>
+	
+	<section id="hw2">
+		<h1 class="contents-titles">Drag&Drop</h1>
+		<div class="contents-2" style="background-color: rgb(106, 90, 205, 0.7)">
+		
+		</div>
+	
+	</section>
+	
+	<section id="hw3">
+		<h1 class="contents-titles">LocalStorage</h1>
+		<div class="contents-2" style="background-color: rgb(255, 220, 229);">
+		
+		</div>
+	
+	</section>
 	<!-- contents End -->	
 	
 	<!-- Footer -->
-	<footer class=" text-center text-white fixed-bottom "  style="background-color: #3B71CA; ">
-	    <!-- Grid container -->
-	    <div class="container p-4 pb-0" style="height: 80px">
-	        <!-- Section: Social media -->
-	        <section class="mb-4">
-	            <!-- member -->
-	            <a class="btn btn-outline-light btn-floating m-1" href="Woonani.html" role="button"><i class="bi bi-dice-1"></i></a>
-	            <a class="btn btn-outline-light btn-floating m-1" href="tbgg.html" role="button"><i class="bi bi-dice-2"></i></a>
-	            <a class="btn btn-outline-light btn-floating m-1" href="devsibong.html" role="button"><i class="bi bi-dice-3"></i></a>
-	            <a class="btn btn-outline-light btn-floating m-1" href="nylonmusk.html" role="button"><i class="bi bi-dice-4"></i></a>
-	
-	            <!-- notion -->
-	            <a class="btn btn-outline-light btn-floating m-1" href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e" role="button"><i class="bi bi-google"></i></a>
-	
-	            <!-- Github -->
-	            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a>
-	        </section>
-	        <!-- Section: Social media End -->
-	    </div>
-	    <!-- Grid container End -->
-	
-	    <!-- Copyright -->
-	    <div class="text-center p-3" style="background-color: #3B71CA;" >
-	        ©더존5기5조:
-	        <a class="text-white" href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">team5notion.com</a>
-	    </div>
-	    <!-- Copyright End -->
+	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0); ">	
+	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
+	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA"  href="#" role="button"><i class="bi bi-chevron-double-up"></i></i></i></a>
+	            <!-- <a class="btn  m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a> -->
+	    </div> 
 	</footer>
+	
 	<!-- Footer --> 
 </body>
 <script type="text/javascript"></script>
