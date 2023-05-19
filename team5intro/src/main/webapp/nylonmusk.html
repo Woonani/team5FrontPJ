@@ -221,16 +221,7 @@
 				top : top
 			};
 		}
-	}
-
-	function resetPositions() {
-		var puzzlePieces = document.getElementsByClassName("puzzle-piece");
-		for (var i = 0; i < puzzlePieces.length; i++) {
-			var puzzlePiece = puzzlePieces[i];
-			var id = puzzlePiece.id;
-			puzzlePiece.style.left = initialPositions[id].left;
-			puzzlePiece.style.top = initialPositions[id].top;
-		}
+		
 	}
 
 	function handleDragStart(event) {
