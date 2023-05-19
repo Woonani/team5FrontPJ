@@ -12,18 +12,20 @@
 	<style type="text/css">
 	body {
 		overflow:scroll;
-		margin-bottom: 300px;
+		margin-top:100px;
+		margin-bottom: 30px;
 		text-align: center;
 	}
 	.sections{
-		padding: 30px 0px;
+		padding: 30px 0px;		
+		clear: both;
 	}
 	.contents-titles{
-		margin: 100px 0px 10px 30px;
+		margin: 100px 0px 50px 0px;
 	}
+
 	.contents-1  {
-		margin: 30px;
-		clear: both;
+		margin: 30px 0px;
 		text-align: center;
 		width: 100vw;
 		justify-content: center;
@@ -35,10 +37,11 @@
 		width: 100vw;
 		height: 500px;
 		justify-content: center;
-		display: flex;
 	}
+
 	#teamimg {
 		width : 120px;
+		height : 120px;
 		border-radius: 50%;
 	}
 	#teamimg:hover {
@@ -49,7 +52,7 @@
 	/* li {
 		display: inline;
 	} */
-	.function-box {
+	.member-box {
 		 background-color: rgba(145, 186, 255, 0.3);
 		 border-radius: 10px;
 		 float: left;
@@ -58,16 +61,17 @@
 		 padding: 35px;
 		 width: 300px;
 		 display: grid;
-		 grid-template-rows: repeat(2, 1fr);
+		 
+/* 		 grid-template-rows: repeat(2, 1fr); */
 	}
 		
-	.function-box > :nth-child(2) {
-		display: grid;
-		grid-template-rows: 40% 60%;
+	.member-box > :nth-child(2) > li {
+		text-align: left;
+		
 
 	}
 
-	.function-box button {
+	.member-box button {
 		 background-color: rgba(255, 255, 255, 0.4);
 		 border-radius: 10px;
 		 text-align: center;
@@ -78,7 +82,7 @@
 <body>
 
 	 <!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; position: fixed; top:0; width: 100vw;">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #3B71CA;">
 <!-- 	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; position: fixed; top:0; width:100%;"> -->
 	    <!-- Container wrapper -->
 	    <div class="container-fluid">
@@ -117,58 +121,58 @@
 	<!-- Navbar End -->	
 	
 	<!-- contents -->
-	<div class="contents-main" >		
+	<div class="contents-main" ></div>		
 		<h1 class="contents-titles"> Team 5 Members </h1>
 		<section class="contents-1" id="top">
-			<div class="function-box" id="function-box1">
+<!-- 		<div> -->
+			<div class="member-box" id="member-box1">
 				<div>
-					<p><a href="Woonani.html"><img src="images/wne2.jpg" alt="우나사진" id="teamimg" ></a></p>
-					<p><h4>우나은</h4></p>
+					<a href="Woonani.html"><img src="images/wne2.jpg" alt="우나사진" id="teamimg" ></a>
 				</div>
 				<div>
+					<h4>우나은</h4><br>
 					<li>5조 조장</li>
 					<li>소울푸드 : 햄버거</li>
 				</div>
 				<br>
 			</div>
 			
-			
-			<div class="function-box" id="function-box3">
+			<div class="member-box" id="member-box2">
 				<div>
-					<p><a href="tbgg.html"><img src="images/jbk2.jpg" alt="병국사진" id="teamimg"></a></p>
-					<p><h4>조병국</h4></p>
+					<a href="tbgg.html"><img src="images/jbk2.jpg" alt="병국사진" id="teamimg"></a>
 				</div>
 				<div>
+					<h4>조병국</h4><br>
 					<li>5조 조장</li>
 					<li>소울푸드 : 햄버거</li>
 				</div>
 				<br>
 			</div>
 			
-			<div class="function-box" id="function-box2">
+			<div class="member-box" id="member-box3">
 				<div>
-					<p><a href="devsibong.html"><img src="images/chd2.jpg" alt="현동사진" id="teamimg"></a></p>
-					<p><h4>최현동</h4></p>
+					<a href="devsibong.html"><img src="images/chd2.jpg" alt="현동사진" id="teamimg"></a>
 				</div>
 				<div>
+					<h4>최현동</h4><br>
 					<li>5조 조장</li>
 					<li>소울푸드 : 햄버거</li>
 				</div>
 				<br>
 			</div>
 			
-			<div class="function-box" id="function-box4">
+			<div class="member-box" id="member-box4">
 				<div>
-					<p><a href="nylonmusk.html"><img src="images/kch2.jpg" alt="창현사진" id="teamimg"></a></p>
-					<p><h4>김창현</h4></p>
+					<a href="nylonmusk.html"><img src="images/kch2.jpg" alt="창현사진" id="teamimg"></a>
 				</div>
 				<div>
+					<h4>김창현</h4><br>
 					<li>5조 조장</li>
 					<li>소울푸드 : 햄버거</li>
 				</div>				
 				<br>
-				</div>
 			</div>	
+<!-- 		</div> -->
 		</section>
 		
 	<section class="sections" id="hw1">
@@ -196,15 +200,27 @@
 	</section>
 	<!-- contents End -->	
 	
+	
 	<!-- Footer -->
-	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0); ">	
+	<!-- button footer -->
+	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
 	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
-	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA"  href="#" role="button"><i class="bi bi-chevron-double-up"></i></i></i></a>
+	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
 	            <!-- <a class="btn  m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a> -->
 	    </div> 
 	</footer>
+	<!-- copyWrite footer -->
+	<footer class=" text-center text-white"  style="background-color: rgba(0, 0, 0, 0);">	
+	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
+	           <br><br><br><br><br>
+			 <a class="text-black"	href="https://citrine-sardine-be2.notion.site/TEAM-5-0a2b704b186342e09fd488f475d95551"> 📜 TEAM5 Notion </a> ||
+			 <a class="text-black"	href="https://github.com/Woonani/team5FrontPJ.git"><i class="bi bi-github"> TEAM5 GitHub </i></a><br><br>
+			 <a class="text-black"  href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">©더존5기5조</a><br><br>
+	    </div> 
+	   
+	</footer>
+	
 	
 	<!-- Footer --> 
 </body>
-<script type="text/javascript"></script>
 </html>
