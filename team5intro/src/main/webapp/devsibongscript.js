@@ -17,7 +17,7 @@ function checkUser() {
 
 		// sidebar 펼치기
 		let sidebar = document.getElementById('sidebar');
-		sidebar.classList.add('show'); 
+		sidebar.classList.add('show');
 
 		// geolocation으로 현재 위치 가져오기
 		getGeoLocation().then(function(location) {
@@ -60,8 +60,7 @@ function searchAddrFromCoords(coords, callback) {
 }
 
 // 모달에서 저장 버튼 클릭 시 실행되는 함수
-let registerBtn = document.getElementById('registerBtn');
-registerBtn.addEventListener('click', function() {
+document.getElementById('registerBtn').addEventListener('click', function() {
 	let userName = document.getElementById('userName').value;
 	let nameErrorMessage = document.getElementById('nameErrorMessage');
 
@@ -77,19 +76,9 @@ registerBtn.addEventListener('click', function() {
 	} else {
 		nameErrorMessage.classList.remove('d-none');
 	}
+	
+	
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Promise
 function getGeoLocation() {
@@ -171,28 +160,94 @@ function handleImageEvent() {
 	imageDropArea.addEventListener('drop', (event) => {
 		event.preventDefault();
 		imageDropArea.classList.remove('border-primary');
-		const file = event.dataTransfer.files[0];
+		let file = event.dataTransfer.files[0];
 		handleImageFile(file);
 	});
 }
 
-// 첨부한 이미지 처리 ***
 function handleImageFile(file) {
-	const allowedExtensions = ['.png'];
-	const fileName = file.name;
-	const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+  const allowedExtensions = ['.png', '.jpg', '.gif'];
+  const fileName = file.name;
+  const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
 
-	if (!allowedExtensions.includes(fileExtension)) {
-		document.getElementById('imageErrorMessage').classList.remove('d-none');
-		return;
-	}
+  if (!allowedExtensions.includes(fileExtension)) {
+    document.getElementById('imageErrorMessage').classList.remove('d-none');
+    return;
+  }
 
-	// 파일 처리 로직
+  // 파일 처리 로직
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const imagePreview = document.getElementById('imagePreview');
+    imagePreview.src = event.target.result;
+    imagePreview.width = 200;
+    imagePreview.height = 200;
+
+    // 등록 버튼 클릭 시 파일 주소를 localStorage에 저장
+    document.getElementById('registerBtn').addEventListener('click', function() {
+      const data = {
+        profileImagePath: event.target.result
+      };
+      localStorage.setItem('userData', JSON.stringify(data));
+      // 모달 닫기 등 다른 동작 수행
+      // ...
+    });
+  };                                      
+  reader.readAsDataURL(file);
 }
+
 
 // 이름 유효성 검사 함수
 function validateName(input) {
 	const regex = /^[가-힣]{1,5}$/;
 	return regex.test(input);
 }
+
+
+// sidebar drag and drop 처리
+let boxes = document.querySelectorAll('[name="box"]');
+let items = document.querySelectorAll('[name="item"]');
+
+items.forEach(item => {
+	item.addEventListener('dragstart', dragStartItem)
+	item.addEventListener('dragend', dragEnd)
+});
+
+let dragItem = null;
+
+function dragStartItem() {
+	console.log('drag started');
+	dragItem = this;
+	setTimeout(() => this.classList.add('invisible'), 0);
+}
+function dragEnd() {
+	console.log('drag ended');
+	dragItem.classList.remove('invisible');
+	dragItem = null;
+}
+
+boxes.forEach(box => {
+	box.addEventListener('dragover', dragOver);
+	box.addEventListener('dragenter', dragEnter);
+	box.addEventListener('dragleave', dragLeave);
+	box.addEventListener('drop', dragDrop);
+});
+
+function dragOver() {
+	event.preventDefault();
+}
+function dragEnter() {
+}
+function dragLeave() {
+}
+function dragDrop() {
+	this.append(dragItem);
+}
+
+
+
+
+
+
+
 
