@@ -10,33 +10,37 @@
 	<style type="text/css">
 	body {
 		overflow:scroll;
-		margin-top:100px;
+		margin-top:10px;
 		margin-bottom: 30px;
-		/* text-align: center; */
-	}
-	.contents-1  {
-		margin: 30px;
-		clear: both;
-	}
-	.function-box {
-		 background-color: rgba(145, 186, 255, 0.3);
-		 border-radius: 10px;
-		 float: left;
-		 height : 300px;
-		 margin: 25px;
-		 padding: 35px;
-		 text-align: center;
-		 width: 400px;
-	}
-	.function-box button {
-		 background-color: rgba(255, 255, 255, 0.7);
-		 border-radius: 10px;
-		 text-align: center;
-		 margin: 10px 0px;
+		text-align: center;
 	}
 	
-	.contents-main button { /* 부모클래스 contents-main 밑에 있는 자식 태그 button만 적용 (nav의 햄버거 버튼때문에!) */
-	  width: 100%;
+	.sections{
+		padding: 30px 0px;		
+		clear: both;
+	}
+	.contents-titles{
+		margin: 100px 0px 50px 0px;
+	}
+
+/* 	.contents-1  {
+		margin: 30px 0px;
+		text-align: center;
+		width: 100vw;
+		justify-content: center;
+		display: flex;		
+	} */
+	
+	.contents-2 {
+
+		text-align: center;
+		width: 100vw;
+		height: 500px;
+		justify-content: center;
+	}
+	
+	.contents-main {
+	  
 	}
 	</style>
 
@@ -80,79 +84,32 @@
 	<!-- contents -->
 	<div class="contents-main" >
 	
-		<div class="contents-1">
-			<h1 id="shownick"></h1>
-			<br>
-			<input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" >			
-			<input type="button" id="nickbtn" name="nickbtn" value="닉네임 바꾸기" onclick="setNick()">		
-			<input type="button" id="nick-remove-btn" value="저장된닉삭제" onclick="removeNick()" >	
-		</div>
+	<section class="sections" id="hw1">
+		<h1 class="contents-titles">About Me</h1>
+		<div class="contents-2" style="background-color: rgb(255, 197, 100, 0.5)">
 		
+		</div>
+	</section>
 	
-		<div class="contents-1">
-			<h1>#1 </h1>
-			<input id="inputToDo" type="text" placeholder="할일을 적어주세요"> 
-			<input id="btnToDo" type="button" value="등록"><br>		
-			
-			<div class="function-box" id="function-box1">
-				<h4>To Do List</h4><br><br>
-				<div class="toDoBox">
+	<section class="sections" id="hw2">
 
-				</div>
-				
-			</div>
+		<h1 class="contents-titles">Skills</h1>
+		<div class="contents-2" style="background-color: rgb(106, 190, 205, 0.5)">
 			
-			<div class="function-box" id="function-box2">
-				<h4>In Progress</h4><br><br>
-				<div id="dragdiv" draggable="true" ondragstart="drag(event)"><i class="bi bi-apple"></i> Drag Me!</div>
-				<div id="dropdiv" ondrop="drop(event)" ondragover="allowDrop(event)"><i class="bi bi-arrow-90deg-down"></i> Drop Here!<br></div>
-				<br><br>
-			</div>
-			
-			<div class="function-box" id="function-box3">
-				<h4>Done</h4><br> 
-				
-			</div>
 		</div>
-<!-- 		<div class="contents-1">
-			<h1>#1 </h1>
-			<div class="function-box" id="function-box1">
-				<h4>HTML Geolocation Example</h4><br><br>
-				
-				<p id="demo"> </p><br><br>
-				  <img src="images/img_5terre.jpg" alt="Italy" style="width:100%">
-				<button onclick="getLocation()">Get Location</button>
-			</div>
-			
-			<div class="function-box" id="function-box2">
-				<h4>HTML Drag/Drop Example</h4><br><br>
-				<div id="dragdiv" draggable="true" ondragstart="drag(event)"><i class="bi bi-apple"></i> Drag Me!</div>
-				<div id="dropdiv" ondrop="drop(event)" ondragover="allowDrop(event)"><i class="bi bi-arrow-90deg-down"></i> Drop Here!<br></div>
-				<br><br>
-			</div>
-			
-			<div class="function-box" id="function-box3">
-				<h4>HTML Local Storage Example</h4><br> 
-				<p>Enter your name:</p>
-				<input type="text" id="name" value=""><br><br>
-				<button onclick="saveName()">Save</button><br><br>
-				<p>Your name is: <span id="savedName"></span></p>
-				<br>
-			</div>
-		</div> -->
-		
-		<!-- spacer -->
-		<div  class="contents-1">
-			<br><br><hr><br><br>
-		</div>
-
-		
 	
+	</section>
+	
+	<section class="sections" id="hw3">
+		<h1 class="contents-titles">Play Ground</h1>
+		<div class="contents-2" style="background-color: rgb(255, 220, 229);">
+		
+		</div>
+	
+	</section>
 	</div>
-	
-	
 	<!-- contents End -->
-	
+
 	
 	
 	<!-- Footer -->
