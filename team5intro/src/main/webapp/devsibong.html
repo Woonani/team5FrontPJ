@@ -68,11 +68,10 @@
 			aria-labelledby="offcanvasScrollingLabel"
 			style="margin-top: 70px; margin-bottom: 136px;">
 			<div class="offcanvas-header">
-
 				<div class="offcanvas-title">
 					<div class="d-flex align-items-center">
 						<img src="image/defaultUserImage.png" alt="userImg" width="64px"
-							height="64px" class="me-2">
+							height="64px" class="me-2 rounded-circle" id="userImage">
 						<div>
 							<div class="fs-4">
 								<span class="fw-bold" id="loginUserName"></span>님, 안녕하세요!
@@ -84,13 +83,16 @@
 						</div>
 					</div>
 				</div>
-
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
 					aria-label="Close"></button>
 			</div>
 			<div class="offcanvas-body">
 				<div class="card mb-2" name="box">
-					<h5 class="card-header">내</h5>
+					<div class="card-header fw-bold d-flex justify-content-between">
+						<div class="fs-5" id="personal">내 장소</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-black fs-5"></i></a>
+					</div>
 					<div class="card m-2" name="item" draggable="true">
 						<div class="card-body p-2">hello~~1</div>
 					</div>
@@ -99,7 +101,12 @@
 					</div>
 				</div>
 				<div class="card mb-2" name="box">
-					<h5 class="card-header">내</h5>
+					<div
+						class="card-header fw-bold d-flex justify-content-between bg-warning">
+						<div class="fs-5" id="cafe">카페</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-black fs-5"></i></a>
+					</div>
 					<div class="card m-2" name="item" draggable="true">
 						<div class="card-body p-2">hello~~4</div>
 					</div>
@@ -108,7 +115,12 @@
 					</div>
 				</div>
 				<div class="card mb-2" name="box">
-					<h5 class="card-header">내</h5>
+					<div
+						class="card-header fw-bold d-flex justify-content-between bg-danger text-white">
+						<div class="fs-5" id="restaurant">식당</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-white fs-5"></i></a>
+					</div>
 					<div class="card m-2" name="item" draggable="true">
 						<div class="card-body p-2">hello~~7</div>
 					</div>
@@ -148,7 +160,10 @@
 							<div id="imageDropArea"
 								class="border border-1 rounded p-3 d-flex align-items-center justify-content-center text-secondary text-center"
 								style="height: 200px; user-select: none;">
-								여기를 클릭하거나<br> 이미지를 드랍하세요.<br> .png(200*200)
+								<div id="imageNone">
+									여기를 클릭하거나<br> 이미지를 드랍하세요.<br> .png(200*200)
+								</div>
+								<img id="imagePreview"></img>
 							</div>
 							<div class="text-danger d-none" id="imageErrorMessage">.png파일만
 								등록할 수 있습니다.</div>
@@ -167,7 +182,18 @@
 
 
 
-	<div id="map" class="vh-100"></div>
+	<div id="map" class="vh-100">
+		<div class="toast-container top-0 start-50 translate-middle-x mt-5">
+			<div class="toast align-items-center text-bg-primary border-0 mt-5"
+				role="alert" aria-live="assertive" aria-atomic="true" id="liveToast"  data-bs-autohide="false">
+				<div class="d-flex">
+					<div class="toast-body">마커를 그만 찍으려면 이 창을 닫으세요.</div>
+					<button type="button" class="btn-close btn-close-white me-2 m-auto"
+						data-bs-dismiss="toast" aria-label="Close" id="stopMarker"></button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 

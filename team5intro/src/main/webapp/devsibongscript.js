@@ -1,46 +1,9 @@
 window.onload = function() {
 	checkUser();
 };
-let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
-// 데이터가 없는 경우 모달 창 표시
-function checkUser() {
-	let userData = localStorage.getItem('userData');
-	if (!userData) {
-		modalInstance.show();
-		handleImageEvent();
-	} else {
-		// locatstorage에서 userData 불러오기
-		let parsedData = JSON.parse(userData);
-		let loginUserName = document.getElementById('loginUserName');
-		loginUserName.textContent = parsedData.name;
-
-		// sidebar 펼치기
-		let sidebar = document.getElementById('sidebar');
-		sidebar.classList.add('show');
-
-		// geolocation으로 현재 위치 가져오기
-		getGeoLocation().then(function(location) {
-			let lat = location.lat;
-			let lon = location.lon;
-			var locPosition = new kakao.maps.LatLng(lat, lon)
-			displayMarker(locPosition);
-			searchAddrFromCoords(locPosition, function(result, status) {
-				if (status === kakao.maps.services.Status.OK) {
-					// 주소 정보를 정상적으로 받아왔을 때 실행할 코드 작성
-					console.log(result[0].address_name); // 주소 정보 중 첫 번째 결과의 행정동 주소 출력
-					document.getElementById('userLocation').textContent = result[0].address_name;
-				} else {
-					// 주소 정보를 받아오지 못했을 때 실행할 코드 작성
-					console.log('주소 정보를 가져오지 못했습니다.');
-				}
-			});
-		}).catch(function(error) {
-			console.error(error);
-		});
-	}
-}
-
+const toastLive = document.getElementById('liveToast');
+const toast = new bootstrap.Toast(toastLive);
 
 
 // kakapmap api 설정
@@ -50,35 +13,153 @@ let options = {
 	level: 3
 };
 let map = new kakao.maps.Map(container, options);
-// 주소-좌표 변환 객체 생성
 let geocoder = new kakao.maps.services.Geocoder();
 
-// 좌표로 주소 받기
-function searchAddrFromCoords(coords, callback) {
-	// 좌표로 행정동 주소 정보를 요청합니다
-	geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+function getAddressFromCoords(locPosition) {
+	geocoder.coord2RegionCode(locPosition.getLng(), locPosition.getLat(), function(result) {
+		document.getElementById('userLocation').textContent = result[0].address_name;
+	});
+}
+let markers = [];
+
+// 모달창
+let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+
+// 로컬 스토리지에 데이터가 없는 경우 모달 창 표시
+function checkUser() {
+	let userData = localStorage.getItem('userData');
+
+	if (!userData) {
+		modalInstance.show();
+		handleImageEvent();
+	} else {
+		// locatstorage에서 userData 불러오기
+		let parsedData = JSON.parse(userData);
+		document.getElementById('loginUserName').textContent = parsedData.name;
+		let userProfileImage = parsedData.profileImagePath;
+		if (userProfileImage != "") {
+			document.getElementById('userImage').src = userProfileImage;
+		} else {
+			document.getElementById('userImage').src = "image/defaultUserImage.png";
+		}
+
+		// sidebar 펼치기
+		document.getElementById('sidebar').classList.add('show');
+
+		// geolocation으로 현재 위치 가져오기
+		getGeoLocation().then(function(location) {
+			let lat = location.lat;
+			let lon = location.lon;
+			let locPosition = new kakao.maps.LatLng(lat, lon);
+			displayMarker(locPosition, 'personal');
+			map.panTo(locPosition);
+			getAddressFromCoords(locPosition);
+		}).catch(function(error) {
+			console.error(error);
+		});
+	}
 }
 
-// 모달에서 저장 버튼 클릭 시 실행되는 함수
+
+// + 버튼을 누르면 지도에 마커를 표시할 수 있는 상태가 되고, 클릭시 마커를 표시한다.
+let addMarkerBtns = document.querySelectorAll('[name="addMarkerBtn"]');
+let mapClickHandler = null;
+addMarkerBtns.forEach(btx => {
+	let placeType = btx.previousElementSibling.id;
+	if (placeType == "personal") {
+		btx.addEventListener('click', function() {
+			if (mapClickHandler != null) {
+				kakao.maps.event.removeListener(map, 'click', mapClickHandler)
+			};
+			mapClickHandler = function(mouseEvent) {
+				// 클릭한 위치에 마커를 표시합니다 
+				displayMarker(mouseEvent.latLng, 'personal');
+				updateBoard()
+			};
+			kakao.maps.event.addListener(map, 'click', mapClickHandler);
+			toast.show();
+		});
+
+	} else if (placeType == "cafe") {
+		btx.addEventListener('click', function() {
+			if (mapClickHandler != null) {
+				kakao.maps.event.removeListener(map, 'click', mapClickHandler)
+			};
+			mapClickHandler = function(mouseEvent) {
+				// 클릭한 위치에 마커를 표시합니다 
+				displayMarker(mouseEvent.latLng, 'cafe');
+			};
+			kakao.maps.event.addListener(map, 'click', mapClickHandler);
+			toast.show();
+		});
+	} else {
+		btx.addEventListener('click', function() {
+			if (mapClickHandler != null) {
+				kakao.maps.event.removeListener(map, 'click', mapClickHandler)
+			};
+			mapClickHandler = function(mouseEvent) {
+				// 클릭한 위치에 마커를 표시합니다 
+				displayMarker(mouseEvent.latLng, 'restaurant');
+			};
+			kakao.maps.event.addListener(map, 'click', mapClickHandler);
+			toast.show();
+		});
+	}
+});
+
+
+// 닫기 버튼을 누르면 더이상 지도에 마커를 추가하지 않는다.
+document.getElementById("stopMarker").addEventListener('click', function() {
+	kakao.maps.event.removeListener(map, 'click', mapClickHandler);
+})
+
+
+
+// 등록 버튼
 document.getElementById('registerBtn').addEventListener('click', function() {
 	let userName = document.getElementById('userName').value;
 	let nameErrorMessage = document.getElementById('nameErrorMessage');
+	let userImage = document.getElementById('imagePreview').src;
 
 	if (validateName(userName)) {
 		nameErrorMessage.classList.add('d-none');
 		let data = {
-			name: userName
+			name: userName,
+			profileImagePath: userImage
 		};
 		localStorage.setItem('userData', JSON.stringify(data));
 		modalInstance.hide();
 		checkUser();
-
 	} else {
 		nameErrorMessage.classList.remove('d-none');
 	}
-	
-	
 });
+
+function updateBoard() {
+  const categories = {
+    personal: document.getElementById('personal'),
+    cafe: document.getElementById('cafe'),
+    restaurant: document.getElementById('restaurant')
+  };
+
+  markers.forEach(mymarker => {
+    let myType = mymarker.type;
+    
+    // 모든 자식 요소 삭제
+    while (categories[myType].firstChild) {
+      categories[myType].removeChild(categories[myType].firstChild);
+    }
+    
+    let card = document.createElement('div');
+    card.classList.add('card', 'm-2');
+    card.setAttribute('name', 'item');
+    card.setAttribute('draggable', 'true');
+    card.innerHTML = `<div class="card-body p-2">hello~~${myType}</div>`;
+
+    categories[myType].appendChild(card);
+  });
+}
+
 
 // Promise
 function getGeoLocation() {
@@ -86,9 +167,9 @@ function getGeoLocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(
 				function(position) {
-					var lat = position.coords.latitude; // 위도
-					var lon = position.coords.longitude; // 경도
-					var location = {
+					let lat = position.coords.latitude; // 위도
+					let lon = position.coords.longitude; // 경도
+					let location = {
 						lat: lat,
 						lon: lon
 					};
@@ -105,31 +186,34 @@ function getGeoLocation() {
 }
 
 
-// 지도에 마커와 인포윈도우를 표시
-function displayMarker(locPosition, message) {
+// 지도에 마커와 이미지를 표시
+function displayMarker(locPosition, type) {
+	let imageSrc = null; // 마커이미지의 주소입니다    
+	if (type == 'personal') {
+		imageSrc = document.getElementById('userImage').src;
+	} else if (type == 'cafe') {
+		imageSrc = "image/cafe.png";
+	} else {
+		imageSrc = "image/restaurant.png";
+	}
+	let imageSize = new kakao.maps.Size(69, 69); // 마커이미지의 크기입니다
+	let imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
 	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
+	let marker = new kakao.maps.Marker({
 		map: map,
-		position: locPosition
+		position: locPosition,
+		image: markerImage
 	});
 
-	var iwContent = message, // 인포윈도우에 표시할 내용
-		iwRemoveable = true;
-
-	// 인포윈도우를 생성합니다
-	var infowindow = new kakao.maps.InfoWindow({
-		content: iwContent,
-		removable: iwRemoveable
-	});
-
-	// 인포윈도우를 마커위에 표시합니다 
-	infowindow.open(map, marker);
-
-	// 지도 중심좌표를 접속위치로 변경합니다
-	map.setCenter(locPosition);
+	let markerWithType = {
+		type: type,
+		marker: marker
+	};
+	markers.push(markerWithType);
 }
-
 
 // 이미지 드랍 영역 처리
 function handleImageEvent() {
@@ -166,36 +250,27 @@ function handleImageEvent() {
 }
 
 function handleImageFile(file) {
-  const allowedExtensions = ['.png', '.jpg', '.gif'];
-  const fileName = file.name;
-  const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+	const allowedExtensions = ['.png', '.jpg', '.gif'];
+	const fileName = file.name;
+	const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
 
-  if (!allowedExtensions.includes(fileExtension)) {
-    document.getElementById('imageErrorMessage').classList.remove('d-none');
-    return;
-  }
+	if (!allowedExtensions.includes(fileExtension)) {
+		document.getElementById('imageErrorMessage').classList.remove('d-none');
+		return;
+	}
 
-  // 파일 처리 로직
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const imagePreview = document.getElementById('imagePreview');
-    imagePreview.src = event.target.result;
-    imagePreview.width = 200;
-    imagePreview.height = 200;
+	// 파일 처리 로직
+	let reader = new FileReader();
+	reader.onload = function(event) {
+		document.getElementById('imageNone').setAttribute('style', 'display: none;');
+		let imagePreview = document.getElementById('imagePreview');
+		imagePreview.src = event.target.result;
+		imagePreview.width = 200;
+		imagePreview.height = 200;
 
-    // 등록 버튼 클릭 시 파일 주소를 localStorage에 저장
-    document.getElementById('registerBtn').addEventListener('click', function() {
-      const data = {
-        profileImagePath: event.target.result
-      };
-      localStorage.setItem('userData', JSON.stringify(data));
-      // 모달 닫기 등 다른 동작 수행
-      // ...
-    });
-  };                                      
-  reader.readAsDataURL(file);
+	};
+	reader.readAsDataURL(file);
 }
-
 
 // 이름 유효성 검사 함수
 function validateName(input) {
@@ -233,7 +308,7 @@ boxes.forEach(box => {
 	box.addEventListener('drop', dragDrop);
 });
 
-function dragOver() {
+function dragOver(event) {
 	event.preventDefault();
 }
 function dragEnter() {
