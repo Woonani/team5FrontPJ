@@ -1,7 +1,7 @@
 window.onload = function() {
 	checkUser();
 };
-
+let markers = [];
 const toastLive = document.getElementById('liveToast');
 const toast = new bootstrap.Toast(toastLive);
 
@@ -20,7 +20,7 @@ function getAddressFromCoords(locPosition) {
 		document.getElementById('userLocation').textContent = result[0].address_name;
 	});
 }
-let markers = [];
+
 
 // 모달창
 let modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
@@ -74,7 +74,6 @@ addMarkerBtns.forEach(btx => {
 			mapClickHandler = function(mouseEvent) {
 				// 클릭한 위치에 마커를 표시합니다 
 				displayMarker(mouseEvent.latLng, 'personal');
-				updateBoard()
 			};
 			kakao.maps.event.addListener(map, 'click', mapClickHandler);
 			toast.show();
@@ -136,28 +135,32 @@ document.getElementById('registerBtn').addEventListener('click', function() {
 });
 
 function updateBoard() {
-  const categories = {
-    personal: document.getElementById('personal'),
-    cafe: document.getElementById('cafe'),
-    restaurant: document.getElementById('restaurant')
-  };
+	const categories = {
+		personal: document.getElementById('personal').parentElement.parentElement,
+		cafe: document.getElementById('cafe').parentElement.parentElement,
+		restaurant: document.getElementById('restaurant').parentElement.parentElement
+	};
 
-  markers.forEach(mymarker => {
-    let myType = mymarker.type;
-    
-    // 모든 자식 요소 삭제
-    while (categories[myType].firstChild) {
-      categories[myType].removeChild(categories[myType].firstChild);
-    }
-    
-    let card = document.createElement('div');
-    card.classList.add('card', 'm-2');
-    card.setAttribute('name', 'item');
-    card.setAttribute('draggable', 'true');
-    card.innerHTML = `<div class="card-body p-2">hello~~${myType}</div>`;
+	const itemElements = categories.personal.document.querySelectorAll('[name="item"]');
+	
+	
+	itemElements.forEach(item => {
+		item.remove();
+	});
 
-    categories[myType].appendChild(card);
-  });
+
+
+	markers.forEach(mymarker => {
+		let myType = mymarker.type;
+		console.log(myType);
+		let card = document.createElement('div');
+		card.classList.add('card', 'm-2');
+		card.setAttribute('name', 'item');
+		card.setAttribute('draggable', 'true');
+		card.innerHTML = `<div class="card-body p-2">hello~~${myType}</div>`;
+
+		categories[myType].appendChild(card);
+	});
 }
 
 
@@ -213,6 +216,7 @@ function displayMarker(locPosition, type) {
 		marker: marker
 	};
 	markers.push(markerWithType);
+	updateBoard();
 }
 
 // 이미지 드랍 영역 처리
