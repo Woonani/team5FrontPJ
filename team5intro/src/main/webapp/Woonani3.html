@@ -4,11 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 	
 	<style type="text/css">
 		body {
@@ -45,82 +40,7 @@
 		.contents-main button {
 		  width: 100%;
 		}
-		/* 이해완 class들 */
-		.card {
-			padding: 16px;
-			box-shadow: 0 3px 3px -1px #FD951Fcc;
-			width: 250px;
-			margin: 20px 0; 
-			border-radius: 4px;
-			background: #1A1A1C;
-			font-weight: 600;
-			font-size: 18px;
-		}		
-		.status {
-			width: 30px;
-			height: 8px;
-			background: #fff;
-			margin-bottom: 16px;
-			border-radius: 4px;
-		}		
-		.status.green{ background: #66ff66; }		
-		.status.yellow{ background: #ffcc00; }		
-		.status.red{ background: #cc6699; }
-
-
-    
-	    html {
-		font-family: 'Turret Road', cursive;;
-		}
 		
-		body {
-			 background-image: linear-gradient(to right, #753475 , #FFB8D1);
-			 color: #fff;
-		}
-		
-		.boards {
-			display: flex;
-			margin-top: 32px;
-		}
-		
-		.board {
-			background: #141316;
-			margin: 0 16px;
-			border: 1px solid #FD951F11;
-			border-radius: 4px;
-		}
-		
-		.board h3{
-			padding: 16px;
-			margin: 0;
-			color: #FD951Fcc;
-		}
-		
-		.dropzone {
-			padding: 16px;
-			min-width: 280px;
-			min-height: 200px;
-			
-		}
-		
-		
-		
-		.highlight {
-			background: #111002;
-		}
-		
-		.card, .dropzone {
-			transition: .3s ease-in-out;
-		}
-		
-		.is-dragging {
-			cursor: move; 
-			opacity: 0.3;
-		}
-		
-		.dragover {
-			background: #253625;
-		}
 		
 		
     </style>
@@ -212,30 +132,7 @@
 </head>
 <body>
 
-	<!-- Navbar -->
 	
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #3B71CA;">
-	    <!-- Container wrapper -->
-	    <div class="container-fluid">
-	        <!-- Navbar brand -->
-	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-	            <h5 class="pt-1" href="index.html">TEAM5</h5> 
-	        </a>
-
-	        <!-- Toggle button -->
-	        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;">
-	            <i class="bi bi-list"></i>
-	        </button>
-	
-	        <!-- Collapsible wrapper -->
-	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	            <!-- 추가예정 -->
-	        </div>
-	        <!-- Collapsible wrapper -->
-	    </div>
-	    <!-- Container wrapper -->
-	</nav>
-	<!-- Navbar End -->	
 	
 	
 	<!-- contents -->
@@ -246,8 +143,14 @@
 	
 		<div class="contents-1">
 			<h1>#1 </h1>
+			<input id="inputToDo" type="text" placeholder="할일을 적어주세요"> 
+			<input id="btnToDo" type="button" value="등록"><br>		
+			
 			<div class="function-box" id="function-box1">
 				<h4>To Do List</h4><br><br>
+				<div class="toDoBox">
+
+				</div>
 				
 			</div>
 			
@@ -263,58 +166,65 @@
 				
 			</div>
 		</div>
-<!-- 		<div class="contents-1">
-			<h1>#1 </h1>
-			<div class="function-box" id="function-box1">
-				<h4>HTML Geolocation Example</h4><br><br>
-				
-				<p id="demo"> </p><br><br>
-				  <img src="images/img_5terre.jpg" alt="Italy" style="width:100%">
-				<button onclick="getLocation()">Get Location</button>
-			</div>
+
+		<script>
+			let toDoList =[];
+			let progressList =[];
+			let doneList =[];
+
+			window.onload = ()=> {
+				setToDoTags( "toDoList", ".toDoBox" )
+				setToDoTags( "progressList", ".progressBox" )
+				setToDoTags( "doneList", ".doneBox" )				
+			}
+
+			// To Do List 할일 추가 이벤트함수
+			document.getElementById("btnToDo").addEventListener("click", ()=>{
+				let inputValue = document.getElementById("inputToDo").value;
+				if(inputValue.trim().length <1){
+					window.alert("빈내용은 제출 안됨^^");
+				}else{
+					let newToDo = document.getElementById("inputToDo").value;
+					let newToDoTag = document.createElement("p");
+					newToDoTag.innerHTML = newToDo;
+					document.querySelector(".toDoBox").appendChild(newToDoTag);
+
+					// toDoList 배열에 추가하고 LocalStorage에 담는다.					
+					toDoList=JSON.parse(localStorage.getItem("toDoList")); // toDoList.push(newToDo); // X!! 전역변수 toDoList에 LocalStorage정보가 저장되어있지 않다.
+					toDoList.push(newToDo);
+					localStorage.setItem("toDoList", JSON.stringify(toDoList));	
+					document.getElementById("inputToDo").value = "";
+				}
+			})	
 			
-			<div class="function-box" id="function-box2">
-				<h4>HTML Drag/Drop Example</h4><br><br>
-				<div id="dragdiv" draggable="true" ondragstart="drag(event)"><i class="bi bi-apple"></i> Drag Me!</div>
-				<div id="dropdiv" ondrop="drop(event)" ondragover="allowDrop(event)"><i class="bi bi-arrow-90deg-down"></i> Drop Here!<br></div>
-				<br><br>
-			</div>
-			
-			<div class="function-box" id="function-box3">
-				<h4>HTML Local Storage Example</h4><br> 
-				<p>Enter your name:</p>
-				<input type="text" id="name" value=""><br><br>
-				<button onclick="saveName()">Save</button><br><br>
-				<p>Your name is: <span id="savedName"></span></p>
-				<br>
-			</div>
-		</div> 
-		-->
-		
-		<!-- spacer -->
-		<div  class="contents-1">
-		
-			<div class="boards">
-			<!-- ToDo List 존 -->
-			<div class="board">
-				<h3>To-Do List</h3>
-				<div class="dropzone">
-				
-					<div class="card" draggable="true"><div class="status green"></div>
-						<div class="content"> Servlet </div>
-					</div>
-					
-					<div class="card" draggable="true"><div class="status green"></div>
-						<div class="content"> Model2 </div>
-					</div>
-					
-					<div class="card" draggable="true"><div class="status green"></div>
-						<div class="content"> JDBC </div>
-					</div>
-					
-				</div>
-			</div>
-			
+			// toDoList 추가 시 enter키로 제출하는 함수
+			document.getElementById("inputToDo").addEventListener("keyup", (e)=>{
+				if(e.keyCode === 13){
+					event.preventDefault();
+					document.getElementById("btnToDo").click();
+				}
+			})
+
+			// LocalStorage에서 자료를 꺼내와 ListBox에 태그생성하는 함수
+			function setToDoTags( listName, boxClassName ) {
+				if( localStorage.getItem(listName) == null){
+					localStorage.setItem(listName, "[]");
+				}else{
+					listName = JSON.parse(localStorage.getItem(listName));
+					listName.forEach((v)=>{
+						makeToDoTag (v, boxClassName);
+					})
+				}
+			}
+
+			// to Do 태그 생성 함수 
+			function makeToDoTag (toDoTxt, boxClassName){
+				let toDoTag = document.createElement("p");
+						toDoTag.innerHTML = toDoTxt;
+						document.querySelector(boxClassName ).appendChild(toDoTag)
+			}
+
+		</script>	
 			<!-- In Progress 존 -->
 			<div class="board">
 				<h3>In Progress</h3>
