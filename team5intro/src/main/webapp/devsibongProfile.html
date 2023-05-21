@@ -1,237 +1,195 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Fractal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<head>
+		<title>Fractal by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="/your-path-to-fontawesome/css/custom-icons.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-	crossorigin="anonymous"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9047e07256638156761978f1352355b5&libraries=services"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	
+	</head>
 
-<style type="text/css">
-</style>
+	<body class="is-preload">
 
-</head>
-<body>
+		<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
+	    <!-- Container wrapper -->
+	    <div class="container-fluid">
+	        <!-- Navbar brand -->
+	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+	            <h5 class="pt-1" style=" color: #df9637;"  href="index.html">TEAM5</h5> 
+	        </a>
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-dark fixed-top"
-		style="background-color: #3B71CA;">
-		<!-- Container wrapper -->
-		<div class="container-fluid">
-			<!-- Navbar brand -->
-			<a class="navbar-brand mt-2" href="index.html">
-				<h5 class="pt-1" href="index.html">TEAM5</h5>
-			</a>
-
-			<!-- Toggle button -->
-			<button class="navbar-toggler" type="button"
-				data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation" style="float: right;">
-				<i class="bi bi-list"></i>
-			</button>
-
-			<!-- Collapsible wrapper -->
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<!-- Left links -->
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="devsibong.html">#Geolocation</a>
-					</li>
-					<li class="nav-item"><a class="nav-link"
-						href="devsibongProfile.html">#profile</a></li>
-				</ul>
-				<!-- Left links -->
-			</div>
-			<!-- Collapsible wrapper -->
-		</div>
-		<!-- Container wrapper -->
+	        <!-- Toggle button -->
+	        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;">
+	            <i class="bi bi-list"></i>
+	        </button>
+	
+	        <!-- Collapsible wrapper -->
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <!-- Left links -->
+	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #df9637;"  href="devsibong.html">#Geolocation</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #df9637;"  href="devsibongProfile.html">#profile</a>
+	                </li>
+	            </ul>
+	            <!-- Left links -->
+	        </div>
+	        <!-- Collapsible wrapper -->
+	    </div>
+	    <!-- Container wrapper -->
 	</nav>
-	<!-- Navbar End -->
+	<!-- Navbar End -->	
 
-	<div class="contents-main">
-		<div class="offcanvas offcanvas-start p-3" data-bs-scroll="true"
-			data-bs-backdrop="false" tabindex="-1" id="sidebar"
-			aria-labelledby="offcanvasScrollingLabel" style="margin-top: 70px;">
-			<div class="offcanvas-header">
-				<div class="offcanvas-title">
-					<div class="d-flex align-items-center">
-						<img src="image/defaultUserImage.png" alt="userImg" width="64px"
-							height="64px" class="me-2 rounded-circle" id="userImage">
-						<div>
-							<div class="fs-4">
-								<span class="fw-bold" id="loginUserName"></span>님, 안녕하세요!
-							</div>
-							<div class="text-muted">
-								<i class="bi bi-geo-alt-fill me-2"></i><span id="userLocation">위치
-									조회 불가</span>
+		<!-- Header -->
+			<header id="header" style="background-color: #df9637;">
+				<div class="content">
+					<h1><a href="#">CHOI HYUN DONG</a></h1>
+					<p>도지보유자 최현동입니다.<br/>TEAM5의 기술팀을 맡고있습니다.</p>
+					<ul class="actions">
+						<li><a href="#one" class="button icon solid fa-chevron-down scrolly">저에 대해 궁금하신가요?</a></li>
+						<li><a href="#three" class="button icon solid fa-camera-retro">제 소셜 계정으로 놀러오세요</a></li>
+					</ul>
+				</div>
+				<div class="image phone"><div class="inner"><img src="images/screenHD.jpg" alt="" /></div></div>
+			</header>
+
+		<!-- One -->
+			<section id="one" class="wrapper style2 special">
+				<header class="major">
+					<h2><i class="bi bi-person-hearts"></i>어떤 개발자가 되고싶은지</h2><br/>
+					<p></p>
+					
+				</header>
+				<ul class="icons major">
+					<li>#sdf #sf</li>
+					<li>#asdf #asdf #추구</li>
+					<li>#노력한만큼 #성장한만큼 #대우받는</li>
+					
+					<!-- <li><span class="icon solid fa-camera-retro"><span class="label">Shoot</span></span></li>
+					<li><span class="icon solid fa-sync"><span class="label">Process</span></span></li>
+					<li><span class="icon solid fa-cloud"><span class="label">Upload</span></span></li> -->
+
+				</ul>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper">
+				<div class="inner alt">
+
+					<section class="spotlight">
+
+						<div class="image"><img src="images/pic02NE.jpg" alt="" /></div>
+						<div class="content">
+							
+							<h3><i class="bi bi-wrench-adjustable-circle"></i> SKILLS</h3><br>
+							<div style="display: grid; grid-template-columns: repeat(3,2fr);">
+								<ul style="list-style: none;">
+									<h5><i class="icon solid bi bi-braces"></i> JAVA</h5>
+									<li><h6>spring</h6></li>
+									<li><h6>jsp</h6></li>
+									<li><h6>sevlet</h6></li>
+									<li><h6>jdbc</h6></li>
+									
+								</ul>
+								<ul style="list-style: none;">
+									<h5><i class="icon solid bi bi-braces"></i> JavaScript</h5>
+									<li><h6>React.js</h6></li>
+									<li><h6>node.js</h6></li>
+								</ul>
+								<ul style="list-style: none;">
+									<h5><i class="icon solid fa-code"></i> HTML/CSS</h5>
+									<li><h6>HTML5</h6></li>
+									<li><h6>BootStrap</h6></li>
+								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="offcanvas-body">
-				<div class="card mb-2" name="box" id="personalBox">
-					<div class="card-header fw-bold d-flex justify-content-between">
-						<div class="fs-5" id="personal">내 장소</div>
-						<a class="text-dark" href=# name="addMarkerBtn"><i
-							class="bi bi-plus-circle text-black fs-5"></i></a>
-					</div>
-					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-secondary" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-secondary" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-secondary" name="deleteMarkers">전체 삭제</button>
-					</div>
-				</div>
-				<div class="card mb-2" name="box" id="caffeBox">
-					<div
-						class="card-header fw-bold d-flex justify-content-between bg-warning">
-						<div class="fs-5" id="cafe">카페</div>
-						<a class="text-dark" href=# name="addMarkerBtn"><i
-							class="bi bi-plus-circle text-black fs-5"></i></a>
-					</div>
-					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-warning" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-warning" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-warning" name="deleteMarkers">전체 삭제</button>
-					</div>
-				</div>
-				<div class="card mb-2" name="box" id="restBox">
-					<div
-						class="card-header fw-bold d-flex justify-content-between bg-danger text-white">
-						<div class="fs-5" id="restaurant">식당</div>
-						<a class="text-dark" href=# name="addMarkerBtn"><i
-							class="bi bi-plus-circle text-white fs-5"></i></a>
-					</div>
-					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-danger" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-danger" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-danger" name="deleteMarkers">전체 삭제</button>
-					</div>
-				</div>
+					</section>
+					<section class="spotlight">
+						<div class="image"><img src="images/pic02HD.jpg" alt="" /></div>
 
-			</div>
-		</div>
-	</div>
-
-	<!-- contents -->
-
-
-
-	<!-- modal -->
-	<div class="modal fade py-5" id="staticBackdrop" tabindex="-1"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content p-4">
-				<div class="modal-header border-bottom-0">
-					<h1 class="fw-bold mb-0 fs-2">반갑습니다!</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="row pb-3">
-						<label for="userName" class="col-3 text-end">이름</label>
-						<div class="col-9">
-							<input type="text" class="form-control" id="userName"
-								placeholder="1~5자 사이의 한글로 입력하세요." />
-							<div class="text-danger d-none" id="nameErrorMessage">1~5자
-								사이의 한글로 입력하세요.</div>
+						<div class="content">
+							<h3> <i class="bi bi-calendar-heart"></i>  What do I do for fun</h3><br>
+							<p>asdfsdf
+							<br></p>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-3 text-end">프로필 사진</div>
-						<div class="col-9">
-							<div id="imageDropArea"
-								class="border border-1 rounded p-3 d-flex align-items-center justify-content-center text-secondary text-center"
-								style="height: 200px; user-select: none;">
-								<div id="imageNone">
-									여기를 클릭하거나<br> 이미지를 드랍하세요.<br> .png(200*200)
-								</div>
-								<img id="imagePreview"></img>
-							</div>
-							<div class="text-danger d-none" id="imageErrorMessage">.png파일만
-								등록할 수 있습니다.</div>
-							<input type="file" id="imageInput" style="display: none;">
+						
+					</section>
+					<section class="spotlight">
+						<div class="image"><img src="images/pic01HD.jpg" alt="" /></div>
+
+						<div class="content">
+							<h3> <i class="bi bi-calendar-heart"></i>  What do I do for fun</h3><br>
+							<p>ㄴㄴㅇㄹㄴㅇㄹ</p>
 						</div>
-					</div>
+						
+					</section>
+					
+					<section class="spotlight">
+						<div class="image"><img src="images/mbtiHD.gif" alt="" /></div>
+
+						<div class="content">
+							<h3><i class="bi bi-universal-access"></i> MBTI<div class=""></div></h3>
+							<h5>청렴결백한 논리+현실주의자 ISTJ 입니다.<div class=""></div></h5>
+							<br>
+							<p>"ISTJ는 실제 사실에 대하여 정확하고 체계적으로 기억하며 일 처리에 있어서도 신중하고 책임감이 있습니다. 집중력이 강한 현실 감각을 지녔으며 조직적이고 침착합니다. 보수적인 경향이 있으며, 문제를 해결하는데 과거의 경험을 잘 적용하며, 반복되는 일상적인 일에 대한 인내력이 강합니다. 정확성과 조직력을 발휘하는 분야의 일을 선호합니다."
+							</p>
+						</div>
+					</section>
+					
+					<section id="three" class="spotlight">
+						<div class="content">
+							
+							<h3><i class="bi bi-wechat"></i> 비고 </h3>
+							<br>
+							<p>뭐 아무거나</p>
+						</div>
+					</section>
+					
+					
 				</div>
-				<div class="modal-footer border-top-0">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal" id="cancelBtn">건너뛰기</button>
-					<button type="button" class="btn btn-primary" id="registerBtn">등록하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
+			</section>
 
 
-
-	<div id="map" class="vh-100">
-		<div class="toast-container top-0 start-50 translate-middle-x mt-5">
-			<div class="toast align-items-center text-bg-primary border-0 mt-5"
-				role="alert" aria-live="assertive" aria-atomic="true" id="liveToast"
-				data-bs-autohide="false">
-				<div class="d-flex">
-					<div class="toast-body">마커를 그만 찍으려면 이 창을 닫으세요.</div>
-					<button type="button" class="btn-close btn-close-white me-2 m-auto"
-						data-bs-dismiss="toast" aria-label="Close" id="stopMarker"></button>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 
-
-
-
-
-
-	<!-- contents End -->
-
-
-
-	<!-- 	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
+			
+	<!-- Footer -->
+	<!-- button footer -->
+	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
+	
 	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
-	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
-	            <a class="btn  m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a>
+	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: #df9637; background-color: #e6e2d2; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
 	    </div> 
 	</footer>
-	<footer class=" text-center text-white"  style="background-color: rgba(0, 0, 0, 0);">	
-	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
-	           <br><br><br><br><br>
-			 <a class="text-black"	href="https://citrine-sardine-be2.notion.site/TEAM-5-0a2b704b186342e09fd488f475d95551"> 📜 TEAM5 Notion </a> ||
-			 <a class="text-black"	href="https://github.com/Woonani/team5FrontPJ.git"><i class="bi bi-github"> TEAM5 GitHub </i></a><br><br>
-			 <a class="text-black"  href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">©더존5기5조</a><br><br>
-	    </div> 
-	   
-	</footer> -->
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="https://github.com/devsibong" class="icon brands fa-github"><span class="label">github</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="https://devsibong.github.io/" class="icon solid fa-cloud"><span class="label">Notion or Velog</span></a></li>
+			</ul>
+			<p class="copyright"><a href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">&copy; 더존5기5조</a></p>
+		</footer>
+	<!-- Footer --> 
 
-</body>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9047e07256638156761978f1352355b5"></script>
-<script defer type="text/javascript" src="devsibongscript.js"></script>
+	</body>
 </html>
