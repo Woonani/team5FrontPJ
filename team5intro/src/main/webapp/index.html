@@ -26,14 +26,7 @@
 		margin: 100px 0px 50px 0px;
 	}
 
-	.contents-1  {
-		margin: 30px 0px;
-		text-align: center;
-		width: 100vw;
-		justify-content: center;
-		display: flex;		
-	}
-	.contents-2 {
+	/* .contents-2 {
 		background-color: rgb(255, 197, 0, 0.7);
 		text-align: left;
 		width: 100vw;
@@ -42,10 +35,37 @@
 		padding: 50px 200px;
 		display: grid;
 		grid-template-rows: repeat(2, 1fr);
+	} */
+
+	.contents-1  {
+		margin: 30px 0px;
+		width: 100vw;
+		display: flex;	
+		justify-content: center; 
+	}
+
+	
+	.member-box {
+		background-color: rgba(145, 186, 255, 0.3);
+		border-radius: 10px;
+		height : 400px;
+		margin: 25px;
+		padding: 35px;
+		width: 300px;
+		display: grid;
 	}
 	
+	.member-box > :nth-child(2) > li {
+		text-align: left;
+	}
 	
-
+	.member-box button {
+		background-color: rgba(255, 255, 255, 0.4);
+		border-radius: 10px;
+		text-align: center;
+		margin: 10px 0px;
+	}	
+	
 	#teamimg {
 		width : 120px;
 		height : 120px;
@@ -56,34 +76,6 @@
 		border-radius: 50%;
 		box-shadow: 1px 1px 10px 5px rgba(30, 30, 30, 0.7);
 	}
-	/* li {
-		display: inline;
-	} */
-	.member-box {
-		 background-color: rgba(145, 186, 255, 0.3);
-		 border-radius: 10px;
-		 float: left;
-		 height : 400px;
-		 margin: 25px;
-		 padding: 35px;
-		 width: 300px;
-		 display: grid;
-		 
-/* 		 grid-template-rows: repeat(2, 1fr); */
-	}
-		
-	.member-box > :nth-child(2) > li {
-		text-align: left;
-		
-
-	}
-
-	.member-box button {
-		 background-color: rgba(255, 255, 255, 0.4);
-		 border-radius: 10px;
-		 text-align: center;
-		 margin: 10px 0px;
-	}	
 	</style>
 </head>
 <body>
@@ -92,20 +84,14 @@
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #3B71CA;">
 <!-- 	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #3B71CA; position: fixed; top:0; width:100%;"> -->
 	    <!-- Container wrapper -->
-	    <div class="container-fluid">
+	    <div>
 	        <!-- Navbar brand -->
 	        <a class="navbar-brand mt-2 mt-lg-0" href="#">
 	            <h5 class="pt-1" href="index.html">TEAM5</h5> 
 	        </a>
-	        
-	        
-	        <!-- Toggle button -->
-	        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;">
-	            <i class="bi bi-list"></i>
-	        </button>
-	
+
 	        <!-- Collapsible wrapper -->
-	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <div id="navbarSupportedContent"  style="display: inline-block;">
 	            <!-- Left links -->
 	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	                <li class="nav-item">
@@ -131,7 +117,6 @@
 	<div class="contents-main" ></div>		
 		<h1 class="contents-titles"> Team 5 Members </h1>
 		<section class="contents-1" id="top">
-<!-- 		<div> -->
 			<div class="member-box" id="member-box1">
 				<div>
 					<a href="WoonaniProfile.html"><img src="images/wne2.jpg" alt="우나사진" id="teamimg" ></a>
@@ -183,82 +168,8 @@
 				</div>				
 				<br>
 			</div>	
-<!-- 		</div> -->
 		</section>
 		
-	<!-- <section class="sections" id="hw1">
-		<h1 class="contents-titles">Geolocation</h1>
-		<div class="contents-2">
-		<div>
-			<div>
-				<ul> 
-					<h3>Geolocation API</h3> 
-					<li>사용자가 원할 경우 웹 애플리케이션에 위치 정보를 제공할 수 있는 API</li>
-					<li> 브라우저는 위치 정보를 제공하기 전에 사용자에게 위치 정보 권한에 대한 확인을 받는다.</li>
-					
-					
-				</ul> 
-			<div>
-				<ul>
-					<h3>Method</h3> 
-					<li>Geolocation.getCurrentPosition() : 장치의 현재 위치를 가져옴</li>
-					<li>Geolocation.watchPosition() : 장치의 위치가 바뀔 때마다, 자동으로 새로운 위치를 사용해 호출할 처리기 함수 등록</li>
-					
-					
-				</ul>
-			</div>
-		</div>
-		
-		<div>
-			<div>
-				<ul>
-					<h3>Parameter</h3> 
-					<li>Success CallBack ( essential )</li>
-					<li>Error CallBack ( optional )</li>
-					<li>Options ( optional )</li>
-							
-				</ul>
-			</div>
-			<div>
-				<ul>
-					<h3>Interface</h3> 
-					<li>Geolocation : Geolocation API의 주요 클래스로, 사용자의 현재 위치를 가져오고, 위치 변경을 감지하고, 이전에 등록했던 감지기를 제거하는 메서드를 담고 있음</li>
-					<li>Navigator.geolocation : API 접근 지점. Return Geolocation Instance</li>
-					<br>			
-				</ul>
-			</div>
-		</div>
-			
-			
-			
-		
-			
-			
-			 
-			
-			
-			
-			
-			
-		</div>
-	</section>
-	
-	<section class="sections" id="hw2">
-
-		<h1 class="contents-titles">Drag&Drop</h1>
-		<div class="contents-2" style="background-color: rgb(106, 90, 205, 0.7)">
-			
-		</div>
-	
-	</section>
-	
-	<section class="sections" id="hw3">
-		<h1 class="contents-titles">LocalStorage</h1>
-		<div class="contents-2" style="background-color: rgb(255, 220, 229);">
-		
-		</div>
-	
-	</section> -->
 	<!-- contents End -->	
 	
 	
