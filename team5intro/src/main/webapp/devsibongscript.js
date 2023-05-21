@@ -1,7 +1,9 @@
 window.onload = function() {
 	checkUser();
 };
-let markers = [];
+let personalMarkers = [];
+let cafeMarkers = [];
+let restMarkers = [];
 const toastLive = document.getElementById('liveToast');
 const toast = new bootstrap.Toast(toastLive);
 
@@ -112,7 +114,61 @@ document.getElementById("stopMarker").addEventListener('click', function() {
 	kakao.maps.event.removeListener(map, 'click', mapClickHandler);
 })
 
-
+//show, hide, deletemarker
+//show
+document.getElementsByName("showMarkers").forEach(btn => {
+	if (btn.parentElement.parentElement.id == "personalBox") {
+		btn.addEventListener('click', function() {
+			showMarkers(personalMarkers);
+		})
+	} else if (btn.parentElement.parentElement.id == "caffeBox") {
+		btn.addEventListener('click', function() {
+			showMarkers(cafeMarkers);
+		})
+	} else if (btn.parentElement.parentElement.id == "restBox") {
+		btn.addEventListener('click', function() {
+			showMarkers(restMarkers);
+		})
+	}
+}
+)
+//hide
+document.getElementsByName("hideMarkers").forEach(btn => {
+	if (btn.parentElement.parentElement.id == "personalBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(personalMarkers);
+		})
+	} else if (btn.parentElement.parentElement.id == "caffeBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(cafeMarkers);
+		})
+	} else if (btn.parentElement.parentElement.id == "restBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(restMarkers);
+		})
+	}
+}
+)
+//delete
+document.getElementsByName("deleteMarkers").forEach(btn => {
+	if (btn.parentElement.parentElement.id == "personalBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(personalMarkers);
+			personalMarkers.length = 0;			
+		})
+	} else if (btn.parentElement.parentElement.id == "caffeBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(cafeMarkers);
+			cafeMarkers.length = 0;
+		})
+	} else if (btn.parentElement.parentElement.id == "restBox") {
+		btn.addEventListener('click', function() {
+			hideMarkers(restMarkers);
+			restMarkers.length = 0;
+		})
+	}
+}
+)
 
 // 등록 버튼
 document.getElementById('registerBtn').addEventListener('click', function() {
@@ -133,35 +189,6 @@ document.getElementById('registerBtn').addEventListener('click', function() {
 		nameErrorMessage.classList.remove('d-none');
 	}
 });
-
-function updateBoard() {
-	const categories = {
-		personal: document.getElementById('personal').parentElement.parentElement,
-		cafe: document.getElementById('cafe').parentElement.parentElement,
-		restaurant: document.getElementById('restaurant').parentElement.parentElement
-	};
-
-	const itemElements = categories.personal.document.querySelectorAll('[name="item"]');
-	
-	
-	itemElements.forEach(item => {
-		item.remove();
-	});
-
-
-
-	markers.forEach(mymarker => {
-		let myType = mymarker.type;
-		console.log(myType);
-		let card = document.createElement('div');
-		card.classList.add('card', 'm-2');
-		card.setAttribute('name', 'item');
-		card.setAttribute('draggable', 'true');
-		card.innerHTML = `<div class="card-body p-2">hello~~${myType}</div>`;
-
-		categories[myType].appendChild(card);
-	});
-}
 
 
 // Promise
@@ -188,6 +215,23 @@ function getGeoLocation() {
 	});
 }
 
+// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+function setMarkers(map, markers) {
+	for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	}
+}
+
+// "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+function showMarkers(markers) {
+	setMarkers(map, markers)
+}
+
+// "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+function hideMarkers(markers) {
+	setMarkers(null, markers);
+}
+
 
 // 지도에 마커와 이미지를 표시
 function displayMarker(locPosition, type) {
@@ -210,13 +254,14 @@ function displayMarker(locPosition, type) {
 		position: locPosition,
 		image: markerImage
 	});
+	if (type == 'personal') {
+		personalMarkers.push(marker);
+	} else if (type == 'cafe') {
+		cafeMarkers.push(marker);
+	} else {
+		restMarkers.push(marker);
+	}
 
-	let markerWithType = {
-		type: type,
-		marker: marker
-	};
-	markers.push(markerWithType);
-	updateBoard();
 }
 
 // 이미지 드랍 영역 처리
@@ -281,48 +326,6 @@ function validateName(input) {
 	const regex = /^[가-힣]{1,5}$/;
 	return regex.test(input);
 }
-
-
-// sidebar drag and drop 처리
-let boxes = document.querySelectorAll('[name="box"]');
-let items = document.querySelectorAll('[name="item"]');
-
-items.forEach(item => {
-	item.addEventListener('dragstart', dragStartItem)
-	item.addEventListener('dragend', dragEnd)
-});
-
-let dragItem = null;
-
-function dragStartItem() {
-	console.log('drag started');
-	dragItem = this;
-	setTimeout(() => this.classList.add('invisible'), 0);
-}
-function dragEnd() {
-	console.log('drag ended');
-	dragItem.classList.remove('invisible');
-	dragItem = null;
-}
-
-boxes.forEach(box => {
-	box.addEventListener('dragover', dragOver);
-	box.addEventListener('dragenter', dragEnter);
-	box.addEventListener('dragleave', dragLeave);
-	box.addEventListener('drop', dragDrop);
-});
-
-function dragOver(event) {
-	event.preventDefault();
-}
-function dragEnter() {
-}
-function dragLeave() {
-}
-function dragDrop() {
-	this.append(dragItem);
-}
-
 
 
 
