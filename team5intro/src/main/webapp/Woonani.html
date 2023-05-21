@@ -22,7 +22,7 @@
 		 background-color: rgba(145, 186, 255, 0.3);
 		 border-radius: 10px;
 		 float: left;
-		 height : 300px;
+		 /* height : 300px; */
 		 margin: 25px;
 		 padding: 35px;
 		 text-align: center;
@@ -33,6 +33,14 @@
 		 border-radius: 10px;
 		 text-align: center;
 		 margin: 10px 0px;
+	}
+	.function-box p {
+		 background-color: rgba(255, 200, 234, 0.795);
+		 border-radius: 10px;
+		 text-align: center;
+		 margin: 10px 15px 10px 10px;
+		 padding: 5px;
+		 width: 300px;
 	}
 	
 	.contents-main button { /* 부모클래스 contents-main 밑에 있는 자식 태그 button만 적용 (nav의 햄버거 버튼때문에!) */
@@ -90,7 +98,7 @@
 		
 	
 		<div class="contents-1">
-			<h1>#1 </h1>
+			<h1># 칸반보드 (공사중) </h1>
 			<input id="inputToDo" type="text" placeholder="할일을 적어주세요"> 
 			<input id="btnToDo" type="button" value="등록"><br>		
 			
@@ -104,9 +112,9 @@
 			
 			<div class="function-box" id="function-box2">
 				<h4>In Progress</h4><br><br>
-				<div id="dragdiv" draggable="true" ondragstart="drag(event)"><i class="bi bi-apple"></i> Drag Me!</div>
+				<!-- <div id="dragdiv" draggable="true" ondragstart="drag(event)"><i class="bi bi-apple"></i> Drag Me!</div>
 				<div id="dropdiv" ondrop="drop(event)" ondragover="allowDrop(event)"><i class="bi bi-arrow-90deg-down"></i> Drop Here!<br></div>
-				<br><br>
+				<br><br> -->
 			</div>
 			
 			<div class="function-box" id="function-box3">
@@ -114,6 +122,16 @@
 				
 			</div>
 		</div>
+
+		
+		<div class="contents-1">
+			<h4># HTML Geolocation </h4><br><br>
+			<button style="width: 300px;" onclick="getLocation()">Get Location</button>
+			<br>
+			<p id="demo"> </p><br><br>
+				 
+		</div>
+		
 <!-- 		<div class="contents-1">
 			<h1>#1 </h1>
 			<div class="function-box" id="function-box1">
