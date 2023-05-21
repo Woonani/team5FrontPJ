@@ -15,10 +15,12 @@ let options = {
 	level: 3
 };
 let map = new kakao.maps.Map(container, options);
-let geocoder = new kakao.maps.services.Geocoder();
 
+
+let geocoder = new kakao.maps.services.Geocoder();
 function getAddressFromCoords(locPosition) {
 	geocoder.coord2RegionCode(locPosition.getLng(), locPosition.getLat(), function(result) {
+		console.log(result);
 		document.getElementById('userLocation').textContent = result[0].address_name;
 	});
 }
@@ -154,7 +156,7 @@ document.getElementsByName("deleteMarkers").forEach(btn => {
 	if (btn.parentElement.parentElement.id == "personalBox") {
 		btn.addEventListener('click', function() {
 			hideMarkers(personalMarkers);
-			personalMarkers.length = 0;			
+			personalMarkers.length = 0;
 		})
 	} else if (btn.parentElement.parentElement.id == "caffeBox") {
 		btn.addEventListener('click', function() {
@@ -197,16 +199,14 @@ function getGeoLocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(
 				function(position) {
-					let lat = position.coords.latitude; // 위도
-					let lon = position.coords.longitude; // 경도
+					console.log(position);
+					let lat = position.coords.latitude;
+					let lon = position.coords.longitude;
 					let location = {
 						lat: lat,
 						lon: lon
 					};
-					resolve(location); // Promise를 이행하여 위치 정보 객체를 반환
-				},
-				function(error) {
-					reject(error); // Promise를 거부하여 에러를 반환
+					resolve(location);
 				}
 			);
 		} else {
