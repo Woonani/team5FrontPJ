@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,33 +48,7 @@ body {
 </head>
 <body>
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #3B71CA;">
-	    <!-- Container wrapper -->
-	    <div>
-	        <!-- Navbar brand -->
-	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-	            <h5 class="pt-1" href="index.html">TEAM5</h5> 
-	        </a>
-
-	        <!-- Collapsible wrapper -->
-	        <div id="navbarSupportedContent" style="display: inline-block;">
-	            <!-- Left links -->
-	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	                <li class="nav-item">
-	                    <a class="nav-link" href="nylonmusk.html">#Drag&Drop</a>
-	                </li>
-	                <li class="nav-item">
-	                    <a class="nav-link" href="nylonmuskProfile.html">#profile</a>
-	                </li>
-	            </ul>
-	            <!-- Left links -->
-	        </div>
-	        <!-- Collapsible wrapper -->
-	    </div>
-	    <!-- Container wrapper -->
-	</nav>
-	<!-- Navbar End -->	
+	<jsp:include page="/commonmodule/nav.jsp"></jsp:include>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<!-- Left links -->
@@ -155,27 +131,8 @@ body {
 		</div>
 	</div>
 	
-	<!-- Footer -->
-	<!-- button footer -->
-	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
-	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
-	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
-	            <!-- <a class="btn  m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a> -->
-	    </div> 
-	</footer>
-	<!-- copyWrite footer -->
-	<footer class=" text-center text-white"  style="background-color: rgba(0, 0, 0, 0);">	
-	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
-	           <br><br><br><br><br>
-			 <a class="text-black"	href="https://citrine-sardine-be2.notion.site/TEAM-5-0a2b704b186342e09fd488f475d95551"> 📜 TEAM5 Notion </a> ||
-			 <a class="text-black"	href="https://github.com/Woonani/team5FrontPJ.git"><i class="bi bi-github"> TEAM5 GitHub </i></a><br><br>
-			 <a class="text-black"  href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">©더존5기5조</a><br><br>
-	    </div> 
-	   
-	</footer>
 	
-	
-	<!-- Footer --> 
+	<jsp:include page="/commonmodule/footer.jsp"></jsp:include>
 
 
 </body>

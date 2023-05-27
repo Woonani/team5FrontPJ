@@ -1,51 +1,22 @@
-<!DOCTYPE HTML>
-<!--
-	Fractal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Fractal by HTML5 UP</title>
+<head>
+		<title>Team5 Profile</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	
+		
 	</head>
+<body>
+   	<jsp:include page="/commonmodule/nav.jsp"></jsp:include>
 
-	<body class="is-preload">
-
-		<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
-	    <!-- Container wrapper -->
-	    <div class="">
-	        <!-- Navbar brand -->
-	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-	            <h5 class="pt-1" style=" color: #df9637;"  href="index.html">TEAM5</h5> 
-	        </a>
-	
-	        <!-- Collapsible wrapper -->
-	        <div class="" id="navbarSupportedContent"  style="display: inline-block;">
-	            <!-- Left links -->
-	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	                <li class="nav-item">
-	                    <a class="nav-link" style=" color: #df9637;"  href="devsibong.html">#Geolocation</a>
-	                </li>
-	                <li class="nav-item">
-	                    <a class="nav-link" style=" color: #df9637;"  href="devsibongProfile.html">#profile</a>
-	                </li>
-	            </ul>
-	            <!-- Left links -->
-	        </div>
-	        <!-- Collapsible wrapper -->
-	    </div>
-	    <!-- Container wrapper -->
-	</nav>
-	<!-- Navbar End -->	
 
 		<!-- Header -->
 			<header id="header" style="background-color: #df9637;">
@@ -57,7 +28,7 @@
 						<li><a href="#three" class="button icon solid fa-camera-retro">제 소셜 계정으로 놀러오세요</a></li>
 					</ul>
 				</div>
-				<div class="image phone"><div class="inner"><img src="images/screenHD.jpg" alt="" /></div></div>
+				<div class="image phone"><div class="inner"><img src="../images/screenHD.jpg" alt="" /></div></div>
 			</header>
 
 		<!-- One -->
@@ -70,21 +41,14 @@
 				<ul class="icons major">
 					<li>#조용히 #일 #잘하는사람</li>
 					<li>#즐겁게 #일하고 #돈도 버는</li>
-					
-					<!-- <li><span class="icon solid fa-camera-retro"><span class="label">Shoot</span></span></li>
-					<li><span class="icon solid fa-sync"><span class="label">Process</span></span></li>
-					<li><span class="icon solid fa-cloud"><span class="label">Upload</span></span></li> -->
-
 				</ul>
 			</section>
 
 		<!-- Two -->
 			<section id="two" class="wrapper">
 				<div class="inner alt">
-
 					<section class="spotlight">
-
-						<div class="image"><img src="images/pic02NE.jpg" alt="" /></div>
+						<div class="image"><img src="../images/pic02NE.jpg" alt="" /></div>
 						<div class="content">
 							
 							<h3><i class="bi bi-wrench-adjustable-circle"></i> SKILLS</h3><br>
@@ -113,7 +77,7 @@
 						</div>
 					</section>
 					<section class="spotlight">
-						<div class="image"><img src="images/pic02HD.jpg" alt="" /></div>
+						<div class="image"><img src="../images/pic02HD.jpg" alt="" /></div>
 
 						<div class="content">
 							<h3> <i class="bi bi-calendar-heart"></i>  What do I do for fun</h3><br>
@@ -123,7 +87,7 @@
 						
 					</section>
 					<section class="spotlight">
-						<div class="image"><img src="images/pic01HD.jpg" alt="" /></div>
+						<div class="image"><img src="../images/pic01HD.jpg" alt="" /></div>
 
 						<div class="content">
 							<h3> <i class="bi bi-calendar-heart"></i>  What do I do for fun</h3><br>
@@ -133,7 +97,7 @@
 					</section>
 					
 					<section class="spotlight">
-						<div class="image"><img src="images/mbtiHD.gif" alt="" /></div>
+						<div class="image"><img src="../images/mbtiHD.gif" alt="" /></div>
 
 						<div class="content">
 							<h3><i class="bi bi-universal-access"></i> MBTI<div class=""></div></h3>
@@ -151,32 +115,55 @@
 							<br>
 							<p>Contact : seohae7785@gmail.com</p>
 						</div>
-					</section>
-					
-					
+					</section>		
 				</div>
 			</section>
 
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 
-			
-	<!-- Footer -->
-	<!-- button footer -->
+
+
+	<jsp:include page="../commonmodule/footer.jsp"></jsp:include>
+
+</body>
+</html>
+
+
+<!-- 
+
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
+	    <div class="">
+	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+	            <h5 class="pt-1" style=" color: #df9637;"  href="index.html">TEAM5</h5> 
+	        </a>
+		        <div class="" id="navbarSupportedContent"  style="display: inline-block;">
+	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #df9637;"  href="devsibong.html">#Geolocation</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #df9637;"  href="devsibongProfile.html">#profile</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+
+
+
 	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
-	
 	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
 	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: #df9637; background-color: #e6e2d2; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
 	    </div> 
 	</footer>
-		<!-- Footer -->
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="https://github.com/devsibong" class="icon brands fa-github"><span class="label">github</span></a></li>
@@ -185,7 +172,5 @@
 			</ul>
 			<p class="copyright"><a href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">&copy; 더존5기5조</a></p>
 		</footer>
-	<!-- Footer --> 
 
-	</body>
-</html>
+-->

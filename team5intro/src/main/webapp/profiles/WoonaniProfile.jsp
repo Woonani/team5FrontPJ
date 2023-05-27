@@ -1,54 +1,20 @@
-<!DOCTYPE HTML>
-<!--
-	Fractal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Fractal by HTML5 UP</title>
+<head>
+		<title>Team5 Profile</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 		
 	</head>
-
-	<body class="is-preload">
-
-		<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
-	    <!-- Container wrapper -->
-	    <div>
-	        <!-- Navbar brand -->
-	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-	            <h5 class="pt-1" style=" color: #790faa;"  href="index.html">TEAM5</h5> 
-	        </a>
-
-	        <!-- Collapsible wrapper -->
-	        <div id="navbarSupportedContent"  style="display: inline-block;">
-	            <!-- Left links -->
-	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	                <li class="nav-item">
-	                    <a class="nav-link" style=" color: #790faa;" href="Woonani.html">#Kanban Board</a>
-	                </li>
-	                <li class="nav-item">
-	                    <a class="nav-link" style=" color: #790faa;"  href="WoonaniProfile.html">#profile</a>
-	                </li>
-	            </ul>
-	            <!-- Left links -->
-	        </div>
-	        <!-- Collapsible wrapper -->
-	    </div>
-	    <!-- Container wrapper -->
-	</nav>
-	<!-- Navbar End -->	
-
-		<!-- Header -->
+<body>
+   	<jsp:include page="/commonmodule/nav.jsp"></jsp:include>
+<!-- Header -->
 			<header id="header">
 				<div class="content">
 					<h1><a href="#">WOO NAEUN</a></h1>
@@ -59,7 +25,7 @@
 						<li><a href="#three" class="button icon solid fa-camera-retro">제 소셜 계정으로 놀러오세요</a></li>
 					</ul>
 				</div>
-				<div class="image phone"><div class="inner"><img src="images/screenNE.jpg" alt="" /></div></div>
+				<div class="image phone"><div class="inner"><img src="../images/screenNE.jpg" alt="" /></div></div>
 			</header>
 
 		<!-- One -->
@@ -90,7 +56,7 @@
 
 					<section class="spotlight">
 
-						<div class="image"><img src="images/pic02NE.jpg" alt="" /></div>
+						<div class="image"><img src="../images/pic02NE.jpg" alt="" /></div>
 						<div class="content">
 							
 							<h3><i class="bi bi-wrench-adjustable-circle"></i> SKILLS</h3><br>
@@ -115,7 +81,7 @@
 						</div>
 					</section>
 					<section class="spotlight">
-						<div class="image"><img src="images/pic01NE.jpg" alt="" /></div>
+						<div class="image"><img src="../images/pic01NE.jpg" alt="" /></div>
 
 						<div class="content">
 							<h3> <i class="bi bi-calendar-heart"></i>  What do I do for fun</h3><br>
@@ -128,7 +94,7 @@
 					</section>
 					
 					<section class="spotlight">
-						<div class="image"><img src="images/mbtiNE2.gif" alt="" /></div>
+						<div class="image"><img src="../images/mbtiNE2.gif" alt="" /></div>
 
 						<div class="content">
 							<h3><i class="bi bi-universal-access"></i> MBTI<div class=""></div></h3>
@@ -139,7 +105,7 @@
 						</div>
 					</section>
 					<section  class="spotlight">
-						<div class="image"><img src="images/mbtiNE.gif" alt="" /></div>
+						<div class="image"><img src="../images/mbtiNE.gif" alt="" /></div>
 						<div class="content">
 							
 							<h5>하지만 검사지는 저를 INTJ 라고 해요...</h5>
@@ -224,25 +190,45 @@
 			</script>
 
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+	<jsp:include page="../commonmodule/footer.jsp"></jsp:include>
+
+</body>
+
+<!-- 스타일 때문에 
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
+	    <div>
+	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+	            <h5 class="pt-1" style=" color: #790faa;"  href="index.html">TEAM5</h5> 
+	        </a>
+	        <div id="navbarSupportedContent"  style="display: inline-block;">
+	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #790faa;" href="Woonani.html">#Kanban Board</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" style=" color: #790faa;"  href="WoonaniProfile.html">#profile</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
 
 
-			
-	<!-- Footer -->
-	<!-- button footer -->
-	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
+<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
 	
 	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
 	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: #790faa; background-color: #e6e2d2; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
 	    </div> 
 	</footer>
-		<!-- Footer -->
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="https://github.com/Woonani" class="icon brands fa-github"><span class="label">github</span></a></li>
@@ -251,7 +237,5 @@
 			</ul>
 			<p class="copyright"><a href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">&copy; 더존5기5조</a></p>
 		</footer>
-	<!-- Footer --> 
-
-	</body>
+ -->
 </html>
