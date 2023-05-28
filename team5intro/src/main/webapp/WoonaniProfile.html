@@ -10,11 +10,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	
+		
 	</head>
 
 	<body class="is-preload">
@@ -22,23 +23,18 @@
 		<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #e6e2d2; ">
 	    <!-- Container wrapper -->
-	    <div class="container-fluid">
+	    <div>
 	        <!-- Navbar brand -->
 	        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
 	            <h5 class="pt-1" style=" color: #790faa;"  href="index.html">TEAM5</h5> 
 	        </a>
 
-	        <!-- Toggle button -->
-	        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;">
-	            <i class="bi bi-list"></i>
-	        </button>
-	
 	        <!-- Collapsible wrapper -->
-	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <div id="navbarSupportedContent"  style="display: inline-block;">
 	            <!-- Left links -->
 	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	                <li class="nav-item">
-	                    <a class="nav-link" style=" color: #790faa;"  href="Woonani.html">#LocalStorage</a>
+	                    <a class="nav-link" style=" color: #790faa;" href="Woonani.html">#Kanban Board</a>
 	                </li>
 	                <li class="nav-item">
 	                    <a class="nav-link" style=" color: #790faa;"  href="WoonaniProfile.html">#profile</a>
@@ -154,15 +150,78 @@
 					<section id="three" class="spotlight">
 						<div class="content">
 							
-							<h3><i class="bi bi-wechat"></i> 제 성격은 어디에 가까워 보이나요? </h3>
+							<h3><i class="bi bi-wechat"></i> Mood Tracker : 오늘 기분은 어떤가요?</h3>
 							<br>
-							<p>투표 만들기</p>
-						</div>
+							<h5>기록 해 주세요!</h5>
+							<div>
+								<input type="button" id="btnGood" value="Good~!">
+								<input type="button" id="btnSoso" value="So So">
+								<input type="button" id="btnBad" value="Bad..!!"><br>
+							</div>
+							<br><br><br>
+							<details id="voteResult">
+								<summary style="font-size: 20px;">방문자님의 역대 기분 지수</summary>
+								<p>
+									
+									&nbsp; &nbsp; Good~! :  <input id="voteGood" style="border: none;" readonly> </input><br>
+									&nbsp; &nbsp; So So :  <input id="voteSoso" style="border: none;" readonly> </input><br>
+									&nbsp; &nbsp; Bad..!! :  <input id="voteBad" style="border: none;" readonly> </input><br>
+								</p>
+							</details>
+						</div><br><br>
 					</section>
 					
 					
 				</div>
 			</section>
+			<script>
+				let thisFeeling = [];
+				window.onload = ()=>{
+					// localStorage 세팅
+					if(localStorage.getItem("feeling") == null){
+						let voteFeeling = [{"good" : 0}, {"soso" : 0}, {"bad":0}];
+						thisFeeling = localStorage.setItem("feeling", JSON.stringify(voteFeeling));
+					}else{
+						thisFeeling = JSON.parse(localStorage.getItem("feeling"));
+						console.log(thisFeeling);
+					}
+					// 값 가져와서 표시
+					getVoteValue(thisFeeling);
+				}
+
+				function getVoteValue(voteFeeling){
+					document.getElementById("voteGood").value = voteFeeling[0].good;
+					document.getElementById("voteSoso").value = voteFeeling[1].soso;
+					document.getElementById("voteBad").value = voteFeeling[2].bad;
+				}
+
+				document.getElementById("btnGood").addEventListener("click", ()=>{voteOne(0);})
+				document.getElementById("btnSoso").addEventListener("click", ()=>{voteOne(1);})
+				document.getElementById("btnBad").addEventListener("click", ()=>{voteOne(2);})
+
+				function voteOne(btnNo){
+					thisFeeling = JSON.parse(localStorage.getItem("feeling"));
+					switch(btnNo){
+						case 0 : 
+						thisFeeling[0].good += 1;
+							console.log(thisFeeling[0].good)
+							localStorage.setItem("feeling", JSON.stringify(thisFeeling));
+							break;
+						case 1 : 
+						thisFeeling[1].soso += 1;
+							console.log(thisFeeling[1].soso)
+							localStorage.setItem("feeling", JSON.stringify(thisFeeling));
+							break;
+						case 2 : 
+						thisFeeling[2].bad += 1;
+							console.log(thisFeeling[2].bad)
+							localStorage.setItem("feeling", JSON.stringify(thisFeeling));
+							break;
+					}
+					thisFeeling = JSON.parse(localStorage.getItem("feeling"));
+					getVoteValue(thisFeeling);
+				}
+			</script>
 
 
 		<!-- Scripts -->

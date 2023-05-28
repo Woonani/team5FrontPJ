@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- devsibong.jsp -->
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>DevSibong</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
@@ -31,26 +33,9 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9047e07256638156761978f1352355b5&libraries=services"></script>
-
-
 </head>
 <body>
-
-	<!-- Navbar -->
-	<nav class="navbar navbar-dark fixed-top"
-		style="background-color: #3B71CA;">
-		<!-- Container wrapper -->
-		<div class="container-fluid justify-content-start">
-			<!-- Navbar brand -->
-			<a class="navbar-brand mt-2" href="index.html">
-				<h5 class="pt-1" href="index.html">TEAM5</h5>
-			</a>
-			<div><a class="nav-link text-light mt-2" href="devsibong.html">#Geolocation</a></div>
-			<div><a class="nav-link text-light mt-2 ms-2" href="devsibongProfile.html">#profile</a></div>
-		</div>
-		<!-- Container wrapper -->
-	</nav>
-	<!-- Navbar End -->
+	<%@ include file="devsibongnavbar.jsp"%>
 
 	<div class="contents-main">
 		<div class="offcanvas offcanvas-start p-3" data-bs-scroll="true"
@@ -81,9 +66,12 @@
 							class="bi bi-plus-circle text-black fs-5"></i></a>
 					</div>
 					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-secondary" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-secondary" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-secondary" name="deleteMarkers">전체 삭제</button>
+						<button type="button" class="btn btn-outline-secondary"
+							name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-secondary"
+							name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-secondary"
+							name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
 				<div class="card mb-2" name="box" id="caffeBox">
@@ -94,9 +82,12 @@
 							class="bi bi-plus-circle text-black fs-5"></i></a>
 					</div>
 					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-warning" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-warning" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-warning" name="deleteMarkers">전체 삭제</button>
+						<button type="button" class="btn btn-outline-warning"
+							name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-warning"
+							name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-warning"
+							name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
 				<div class="card mb-2" name="box" id="restBox">
@@ -107,9 +98,12 @@
 							class="bi bi-plus-circle text-white fs-5"></i></a>
 					</div>
 					<div class="btn-group m-2" role="group">
-						<button type="button" class="btn btn-outline-danger" name="showMarkers">보이기</button>
-						<button type="button" class="btn btn-outline-danger" name="hideMarkers">숨기기</button>
-						<button type="button" class="btn btn-outline-danger" name="deleteMarkers">전체 삭제</button>
+						<button type="button" class="btn btn-outline-danger"
+							name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-danger"
+							name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-danger"
+							name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
 
