@@ -1,0 +1,245 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nylonmusk's page</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ -->
+<!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+ -->
+
+
+<style type="text/css">
+body {
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
+
+#map {
+	width: 400px;
+	height: 300px;
+}
+
+.puzzle-container {
+	position: relative;
+	width: 510px;
+	height: 510px;
+	border: 1px solid black;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.puzzle-piece {
+	position: absolute;
+	width: 168px;
+	height: 170px;
+	border: 1px solid black;
+	user-select: none; /* 드래그 시 텍스트 선택 방지 */
+	cursor: grab;
+}
+</style>
+
+
+</head>
+<body>
+
+	<br>
+	<jsp:include page="nylonmuskTop.jsp" flush="false" />
+
+	<div class="row mt-5">
+		<div class="col-4">
+			<div class="container col-12 d-flex flex-column align-items-center"
+				style="height: 80px; margin-left: 0;">
+				<h2>정보 입력</h2>
+				<form id="infoForm">
+					<div class="form-group">
+						<label for="nameInput">이름:</label> <input type="text"
+							class="form-control" id="nameInput" required>
+					</div>
+					<div class="form-group">
+						<label for="ageInput">나이:</label> <input type="text"
+							class="form-control" id="ageInput" required>
+					</div>
+					<div class="form-group">
+						<label for="hobbyInput">취미:</label> <input type="text"
+							class="form-control" id="hobbyInput" required>
+					</div>
+					<button type="button" class="btn btn-primary" onclick="saveData()">저장</button>
+				</form>
+				<h3 class="fs-1" id="output"></h3>
+
+			</div>
+		</div>
+
+
+		<div class="col-4">
+			<h2>퍼즐 맞추기</h2>
+			<div class="puzzle-container">
+				<img
+					src="http://drive.google.com/uc?export=view&id=1hhtHeNNRUn5X7hruwouVHtkNm9UnMjxi"
+					class="puzzle-piece" id="piece1" style="left: 0px; top: 0px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1bHdpLnguCZ7Ed-BKUWpbggo-xlvi4IUu"
+					class="puzzle-piece" id="piece2" style="left: 170px; top: 0px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1ZvAljWHIY457-MfvLQFc50Zhb7BIAV-D"
+					class="puzzle-piece" id="piece3" style="left: 340px; top: 0px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1M4JF14ADPpQ8BrLfR4rNvuC1_gbxgGD5"
+					class="puzzle-piece" id="piece4" style="left: 0px; top: 170px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1df27Z71Zs2Z2pSJGbN3Q71dvOxwJXFkG"
+					class="puzzle-piece" id="piece5" style="left: 170px; top: 170px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1CXrmFT5fh5GbhRSPMmfCiC9lnCQf1-Fb"
+					class="puzzle-piece" id="piece6" style="left: 340px; top: 170px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1uVXEN5lc_hyPTI76l_mZTsqLD9AMJuzy"
+					class="puzzle-piece" id="piece7" style="left: 0px; top: 340px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=187oxT4Q25cG1-nprFg260EP-8ntLKx-4"
+					class="puzzle-piece" id="piece8" style="left: 170px; top: 340px;"
+					draggable="true"> <img
+					src="http://drive.google.com/uc?export=view&id=1Cnql1n7hDFsiOVpQViD6FjrPSjkhBmhc"
+					class="puzzle-piece" id="piece9" style="left: 340px; top: 340px;"
+					draggable="true">
+			</div>
+		</div>
+
+		<div class="col-4">
+			<button onclick="getMyLocation()" class="btn btn-primary">내
+				위치 찾기</button>
+			<p id="latitude"></p>
+			<p id="longitude"></p>
+			<div id="map"></div>
+		</div>
+	</div>
+
+	<jsp:include page="nylonmuskBottom.jsp" flush="false" />
+
+
+	<script>
+		displayData();
+
+		function saveData() {
+			var name = document.getElementById('nameInput').value;
+			var age = document.getElementById('ageInput').value;
+			var hobby = document.getElementById('hobbyInput').value;
+
+			localStorage.setItem('name', name);
+			localStorage.setItem('age', age);
+			localStorage.setItem('hobby', hobby);
+
+			displayData();
+		}
+
+		function displayData() {
+			var name = localStorage.getItem('name');
+			var age = localStorage.getItem('age');
+			var hobby = localStorage.getItem('hobby');
+
+			var output = document.getElementById('output');
+			output.innerHTML = '이름: ' + name + '<br>' + '나이: ' + age + '<br>'
+					+ '취미: ' + hobby;
+		}
+	</script>
+
+	<script>
+		var initialPositions = {};
+
+		function saveInitialPositions() {
+			var puzzlePieces = document.getElementsByClassName("puzzle-piece");
+			for (var i = 0; i < puzzlePieces.length; i++) {
+				var puzzlePiece = puzzlePieces[i];
+				var id = puzzlePiece.id;
+				var left = puzzlePiece.style.left;
+				var top = puzzlePiece.style.top;
+				initialPositions[id] = {
+					left : left,
+					top : top
+				};
+			}
+
+		}
+
+		function handleDragStart(event) {
+			event.dataTransfer.setData("text/plain", event.target.id);
+		}
+
+		function handleDragOver(event) {
+			event.preventDefault();
+		}
+
+		function handleDrop(event) {
+			event.preventDefault();
+			var sourceId = event.dataTransfer.getData("text/plain");
+			var sourceElement = document.getElementById(sourceId);
+			var targetElement = event.target;
+
+			var sourceLeft = sourceElement.style.left;
+			var sourceTop = sourceElement.style.top;
+			var targetLeft = targetElement.style.left;
+			var targetTop = targetElement.style.top;
+			sourceElement.style.left = targetLeft;
+			sourceElement.style.top = targetTop;
+			targetElement.style.left = sourceLeft;
+			targetElement.style.top = sourceTop;
+		}
+
+		saveInitialPositions();
+
+		var puzzlePieces = document.getElementsByClassName("puzzle-piece");
+		for (var i = 0; i < puzzlePieces.length; i++) {
+			var puzzlePiece = puzzlePieces[i];
+			puzzlePiece.addEventListener("dragstart", handleDragStart);
+			puzzlePiece.addEventListener("dragover", handleDragOver);
+			puzzlePiece.addEventListener("drop", handleDrop);
+		}
+	</script>
+
+	<script
+		src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6a1b1bd18010cb94c1b75d67c959352a&libraries=services"></script>
+	<script>
+		function getMyLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				alert("Geolocation is not supported by this browser.");
+			}
+		}
+
+		function showPosition(position) {
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			document.getElementById("latitude").textContent = "위도: " + latitude;
+			document.getElementById("longitude").textContent = "경도: "
+					+ longitude;
+
+			// 카카오맵 생성
+			var container = document.getElementById('map');
+			var options = {
+				center : new kakao.maps.LatLng(latitude, longitude),
+				level : 3
+			};
+			var map = new kakao.maps.Map(container, options);
+
+			// 마커 생성
+			var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+			var marker = new kakao.maps.Marker({
+				position : markerPosition
+			});
+
+			// 마커를 지도에 표시
+			marker.setMap(map);
+		}
+	</script>
+</html>
