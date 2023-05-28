@@ -37,58 +37,32 @@
 
 </head>
 <body>
+
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
-		style="background-color: #3B71CA; height: 70px;">
+	<nav class="navbar navbar-dark fixed-top"
+		style="background-color: #3B71CA;">
 		<!-- Container wrapper -->
-		<div class="container-fluid">
+		<div class="container-fluid justify-content-start">
 			<!-- Navbar brand -->
-			<a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-				<h5 class="pt-1">TEAM5</h5>
+			<a class="navbar-brand mt-2" href="index.html">
+				<h5 class="pt-1" href="index.html">TEAM5</h5>
 			</a>
-
-
-			<!-- Toggle button -->
-			<button class="navbar-toggler" type="button"
-				data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation" style="float: right;">
-				<i class="bi bi-list"></i>
-			</button>
-
-			<!-- Collapsible wrapper -->
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<!-- Left links -->
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link"
-						href="/webapp/Intro.html">Intro</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Member</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Function</a>
-					</li>
-				</ul>
-				<!-- Left links -->
-
-
-			</div>
-			<!-- Collapsible wrapper -->
-
-
+			<div><a class="nav-link text-light mt-2" href="devsibong.html">#Geolocation</a></div>
+			<div><a class="nav-link text-light mt-2 ms-2" href="devsibongProfile.html">#profile</a></div>
 		</div>
 		<!-- Container wrapper -->
-
 	</nav>
 	<!-- Navbar End -->
+
 	<div class="contents-main">
 		<div class="offcanvas offcanvas-start p-3" data-bs-scroll="true"
 			data-bs-backdrop="false" tabindex="-1" id="sidebar"
-			aria-labelledby="offcanvasScrollingLabel"
-			style="margin-top: 70px; margin-bottom: 136px;">
+			aria-labelledby="offcanvasScrollingLabel" style="margin-top: 70px;">
 			<div class="offcanvas-header">
-
 				<div class="offcanvas-title">
 					<div class="d-flex align-items-center">
 						<img src="image/defaultUserImage.png" alt="userImg" width="64px"
-							height="64px" class="me-2">
+							height="64px" class="me-2 rounded-circle" id="userImage">
 						<div>
 							<div class="fs-4">
 								<span class="fw-bold" id="loginUserName"></span>님, 안녕하세요!
@@ -100,48 +74,47 @@
 						</div>
 					</div>
 				</div>
-
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-					aria-label="Close"></button>
 			</div>
 			<div class="offcanvas-body">
-				<div class="card mb-2">
-					<h5 class="card-header">내</h5>
-					<div class="card-body">
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
+				<div class="card mb-2" name="box" id="personalBox">
+					<div class="card-header fw-bold d-flex justify-content-between">
+						<div class="fs-5" id="personal">내 장소</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-black fs-5"></i></a>
+					</div>
+					<div class="btn-group m-2" role="group">
+						<button type="button" class="btn btn-outline-secondary" name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-secondary" name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-secondary" name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
-				<div class="card mb-2">
-					<h5 class="card-header">내</h5>
-					<div class="card-body">
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
+				<div class="card mb-2" name="box" id="caffeBox">
+					<div
+						class="card-header fw-bold d-flex justify-content-between bg-warning">
+						<div class="fs-5" id="cafe">카페</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-black fs-5"></i></a>
+					</div>
+					<div class="btn-group m-2" role="group">
+						<button type="button" class="btn btn-outline-warning" name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-warning" name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-warning" name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
-				<div class="card mb-2">
-					<h5 class="card-header">내</h5>
-					<div class="card-body">
-						<div class="card m-2">
-							<div class="card-body p-2">hello~~</div>
-						</div>
+				<div class="card mb-2" name="box" id="restBox">
+					<div
+						class="card-header fw-bold d-flex justify-content-between bg-danger text-white">
+						<div class="fs-5" id="restaurant">식당</div>
+						<a class="text-dark" href=# name="addMarkerBtn"><i
+							class="bi bi-plus-circle text-white fs-5"></i></a>
+					</div>
+					<div class="btn-group m-2" role="group">
+						<button type="button" class="btn btn-outline-danger" name="showMarkers">보이기</button>
+						<button type="button" class="btn btn-outline-danger" name="hideMarkers">숨기기</button>
+						<button type="button" class="btn btn-outline-danger" name="deleteMarkers">전체 삭제</button>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -176,7 +149,10 @@
 							<div id="imageDropArea"
 								class="border border-1 rounded p-3 d-flex align-items-center justify-content-center text-secondary text-center"
 								style="height: 200px; user-select: none;">
-								여기를 클릭하거나<br> 이미지를 드랍하세요.<br> .png(200*200)
+								<div id="imageNone">
+									여기를 클릭하거나<br> 이미지를 드랍하세요.<br> .png(200*200)
+								</div>
+								<img id="imagePreview"></img>
 							</div>
 							<div class="text-danger d-none" id="imageErrorMessage">.png파일만
 								등록할 수 있습니다.</div>
@@ -195,7 +171,19 @@
 
 
 
-	<div id="map" class="vh-100"></div>
+	<div id="map" class="vh-100">
+		<div class="toast-container top-0 start-50 translate-middle-x mt-5">
+			<div class="toast align-items-center text-bg-primary border-0 mt-5"
+				role="alert" aria-live="assertive" aria-atomic="true" id="liveToast"
+				data-bs-autohide="false">
+				<div class="d-flex">
+					<div class="toast-body">마커를 그만 찍으려면 이 창을 닫으세요.</div>
+					<button type="button" class="btn-close btn-close-white me-2 m-auto"
+						data-bs-dismiss="toast" aria-label="Close" id="stopMarker"></button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -207,44 +195,21 @@
 
 
 
-	<!-- Footer -->
-
-	<footer class=" text-center text-white fixed-bottom "
-		style="background-color: #3B71CA;">
-		<!-- Grid container -->
-		<div class="container p-4 pb-0" style="height: 80px">
-			<!-- Section: Social media -->
-			<section class="mb-4">
-				<!-- member -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-dice-1"></i></a> <a
-					class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-dice-2"></i></a> <a
-					class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-dice-3"></i></a> <a
-					class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-dice-4"></i></a>
-
-				<!-- notion -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-google"></i></a>
-
-				<!-- Github -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!"
-					role="button"><i class="bi bi-github"></i></a>
-			</section>
-			<!-- Section: Social media End -->
-		</div>
-		<!-- Grid container End -->
-
-		<!-- Copyright -->
-		<div class="text-center p-3" style="background-color: #3B71CA;">
-			©더존5기5조: <a class="text-white"
-				href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">team5notion.com</a>
-		</div>
-		<!-- Copyright End -->
+	<!-- 	<footer class=" text-center text-white fixed-bottom "  style="background-color: rgba(0, 0, 0, 0);">	
+	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
+	            <a class="btn btn-outline-light btn-floating s-1" style="border-radius: 50%; color: white; background-color: #3B71CA; "  href="#" role="button"><i class="bi bi-chevron-double-up"></i></a>
+	            <a class="btn  m-1" href="https://github.com/Woonani" role="button"><i class="bi bi-github"></i></a>
+	    </div> 
 	</footer>
-	<!-- Footer -->
+	<footer class=" text-center text-white"  style="background-color: rgba(0, 0, 0, 0);">	
+	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); margin-bottom: -5px" >
+	           <br><br><br><br><br>
+			 <a class="text-black"	href="https://citrine-sardine-be2.notion.site/TEAM-5-0a2b704b186342e09fd488f475d95551"> 📜 TEAM5 Notion </a> ||
+			 <a class="text-black"	href="https://github.com/Woonani/team5FrontPJ.git"><i class="bi bi-github"> TEAM5 GitHub </i></a><br><br>
+			 <a class="text-black"  href="https://www.notion.so/5-5-70506e4b0e75428aa4d4db955709678e?pvs=4">©더존5기5조</a><br><br>
+	    </div> 
+	   
+	</footer> -->
 
 </body>
 <script type="text/javascript"
